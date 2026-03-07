@@ -192,4 +192,51 @@ function extractArticleParagraphs() {
       // Return true to indicate we'll call sendResponse asynchronously
       return true;
     }
+
+    if (message.type === "ANALYZE_SELECTION") {
+      (async () => {
+        // Clear existing highlights immediately
+        try {
+          removeOldHighlights();
+        } catch (e) {
+          console.warn("Error removing old highlights", e);
+        }
+
+        isHighlighting = true;
+
+        // Ensure DOM is ready
+        if (document.readyState === "loading") {
+          await new Promise((res) => document.addEventListener("DOMContentLoaded", res, { once: true }));
+        }
+
+        await waitForParagraphs(3000, 200);
+
+        const selectionText = (message.text || "").trim();
+        if (!selectionText) {
+          isHighlighting = false;
+          sendResponse({ success: false, reason: "empty_selection" });
+          return;
+        }
+
+        const labels = detectFlags(selectionText);
+        const tooltipText = labels.length ? labels.join(", ") : "selected text";
+
+        const paras = extractArticleParagraphs();
+        let found = false;
+
+        for (const p of paras) {
+          if (p.textContent.includes(selectionText)) {
+            found = true;
+            const safeSel = escapeRegExp(selectionText);
+            const highlighted = `<span class="roshan-highlight" data-tooltip="${tooltipText}">${selectionText}</span>`;
+            p.innerHTML = p.innerHTML.replace(new RegExp(safeSel, "g"), highlighted);
+          }
+        }
+
+        isHighlighting = false;
+        sendResponse({ success: true, found });
+      })();
+
+      return true;
+    }
   });
