@@ -59,3 +59,58 @@ function extractArticleText() {
       return true;
     }
   });
+
+  // Detect right-click on highlights and inform background so highlight-specific context menu items can be shown
+  document.addEventListener('contextmenu', (e) => {
+    const target = e.target.closest && e.target.closest('.roshan-highlight');
+    if (target) {
+      chrome.runtime.sendMessage({ type: 'HIGHLIGHT_CONTEXT', text: target.textContent, tooltip: target.getAttribute('data-tooltip') || '' });
+    }
+  });
+
+  // Handle actions from the background menu
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if (message.type === 'ASK_GEMINI') {
+      // Placeholder: open a prompt or call a backend later
+      alert('Ask Gemini: ' + (message.text || ''));
+      sendResponse({ success: true });
+      return true;
+    }
+
+    if (message.type === 'HIGHLIGHT_DETAILS') {
+      const details = `Text: ${message.text}\nTooltip: ${message.tooltip || ''}`;
+      alert(details);
+      sendResponse({ success: true });
+      return true;
+    }
+  });
+
+  // Track the currently hovered highlight element (delegated, efficient)
+  let hoveredHighlight = null;
+
+  document.addEventListener('mousemove', (e) => {
+    const el = e.target && e.target.closest && e.target.closest('.roshan-highlight');
+    hoveredHighlight = el || null;
+  });
+
+  // When user presses 'd' while hovering a highlight, show the highlight details
+  document.addEventListener('keydown', (e) => {
+    try {
+      if (e.key && e.key.toLowerCase() === 'd') {
+        const active = document.activeElement;
+        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
+          return; // don't interfere with typing
+        }
+
+        if (hoveredHighlight) {
+          const text = hoveredHighlight.textContent || '';
+          const tooltip = hoveredHighlight.getAttribute('data-tooltip') || '';
+          const details = `Text: ${text}\nTooltip: ${tooltip}`;
+          // Reuse the same UI as the context-menu details for now
+          alert(details);
+        }
+      }
+    } catch (err) {
+      console.warn('Error handling "d" key for highlight details', err);
+    }
+  });
