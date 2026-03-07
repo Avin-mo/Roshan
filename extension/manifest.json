@@ -17,5 +17,12 @@
       "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+
+  "web_accessible_resources": [
+  {
+    "resources": ["roshan_build/*"],
+    "matches": ["<all_urls>"]
+  }
+]
 }
