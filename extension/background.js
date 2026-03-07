@@ -3,7 +3,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "analyzeSelection",
-    title: "Analyze text for propaganda",
+    title: "Analyze text",
     contexts: ["selection"]
   });
 });

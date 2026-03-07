@@ -59,38 +59,61 @@ function extractArticleParagraphs() {
   }
   
   function removeOldHighlights() {
-    document.querySelectorAll(".roshan-highlight").forEach((span) => {
-      const textNode = document.createTextNode(span.textContent);
-      span.replaceWith(textNode);
+    // Unwrap each highlight span while preserving any nested markup inside it
+    document.querySelectorAll('.roshan-highlight').forEach((span) => {
+      const parent = span.parentNode;
+      if (!parent) return;
+
+      // Move all child nodes out of the span back into the parent, before the span
+      while (span.firstChild) {
+        parent.insertBefore(span.firstChild, span);
+      }
+
+      // Remove the now-empty span element
+      parent.removeChild(span);
     });
   }
   
   function highlightParagraph(paragraph) {
-    const originalText = paragraph.textContent;
-    const sentences = splitIntoSentences(originalText);
-  
-    let newHTML = originalText;
-  
+    // Work directly with text nodes to preserve existing markup inside the paragraph
+    const sentences = splitIntoSentences(paragraph.textContent);
+
     for (const sentence of sentences) {
       const labels = detectFlags(sentence);
-  
-      if (labels.length > 0) {
-        console.log("Found bad message...");
-        const safeSentence = escapeRegExp(sentence);
-  
-        const tooltipText = labels.join(", ");
-  
-        const highlightedSentence = `
-          <span class="roshan-highlight" data-tooltip="${tooltipText}">
-            ${sentence}
-          </span>
-        `;
-  
-        newHTML = newHTML.replace(new RegExp(safeSentence), highlightedSentence);
+      if (labels.length === 0) continue;
+
+      const tooltipText = labels.join(", ");
+
+      // Walk text nodes and wrap occurrences of the sentence
+      const walker = document.createTreeWalker(paragraph, NodeFilter.SHOW_TEXT, null, false);
+      let node;
+
+      while ((node = walker.nextNode())) {
+        // Skip empty nodes
+        if (!node.nodeValue || node.nodeValue.trim().length === 0) continue;
+
+        const idx = node.nodeValue.indexOf(sentence);
+        if (idx === -1) continue;
+
+        try {
+          // Split the text node into: before | match | after
+          const after = node.splitText(idx);
+          const rest = after.splitText(sentence.length);
+
+          const span = document.createElement("span");
+          span.className = "roshan-highlight";
+          span.setAttribute("data-tooltip", tooltipText);
+          span.textContent = sentence;
+
+          after.parentNode.replaceChild(span, after);
+
+          // Continue searching after the rest node (avoid reprocessing same text)
+          walker.currentNode = rest;
+        } catch (e) {
+          console.warn("Error wrapping sentence in DOM", e);
+        }
       }
     }
-  
-    paragraph.innerHTML = newHTML;
   }
   
   function injectStyles() {
@@ -156,87 +179,75 @@ function extractArticleParagraphs() {
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "ANALYZE_ARTICLE") {
       (async () => {
-        // If an analysis is already running, clear existing highlights so user sees immediate feedback
         if (isHighlighting) {
-          try {
-            removeOldHighlights();
-          } catch (e) {
-            console.warn("Error removing old highlights while another run was active", e);
-          }
+          try { removeOldHighlights(); } catch (e) { console.warn(e); }
         }
-
         isHighlighting = true;
-
-        // Ensure DOM is ready
         if (document.readyState === "loading") {
           await new Promise((res) => document.addEventListener("DOMContentLoaded", res, { once: true }));
         }
-
-        // Clear any existing highlights immediately so user sees update
-        try {
-          removeOldHighlights();
-        } catch (e) {
-          console.warn("Error removing old highlights", e);
-        }
-
-        // Wait briefly for SPA/delayed content to appear
+        try { removeOldHighlights(); } catch (e) { console.warn(e); }
         await waitForParagraphs(5000, 300);
-
         runHighlighting();
-
         isHighlighting = false;
-
         sendResponse({ success: true });
       })();
-
-      // Return true to indicate we'll call sendResponse asynchronously
+  
       return true;
     }
-
+  
     if (message.type === "ANALYZE_SELECTION") {
       (async () => {
-        // Clear existing highlights immediately
-        try {
-          removeOldHighlights();
-        } catch (e) {
-          console.warn("Error removing old highlights", e);
-        }
-
+        // Immediate visual feedback: remove previous highlights
+        try { removeOldHighlights(); } catch (e) { console.warn(e); }
+  
         isHighlighting = true;
-
-        // Ensure DOM is ready
+  
         if (document.readyState === "loading") {
           await new Promise((res) => document.addEventListener("DOMContentLoaded", res, { once: true }));
         }
-
+  
         await waitForParagraphs(3000, 200);
-
+  
         const selectionText = (message.text || "").trim();
         if (!selectionText) {
           isHighlighting = false;
           sendResponse({ success: false, reason: "empty_selection" });
           return;
         }
-
-        const labels = detectFlags(selectionText);
-        const tooltipText = labels.length ? labels.join(", ") : "selected text";
-
-        const paras = extractArticleParagraphs();
+  
+        // Use the existing paragraph/highlight logic: find paragraphs containing the selection
+        // and re-run the sentence-level detector for those paragraphs.
+        const paragraphs = extractArticleParagraphs();
         let found = false;
-
-        for (const p of paras) {
+  
+        for (const p of paragraphs) {
           if (p.textContent.includes(selectionText)) {
             found = true;
-            const safeSel = escapeRegExp(selectionText);
-            const highlighted = `<span class="roshan-highlight" data-tooltip="${tooltipText}">${selectionText}</span>`;
-            p.innerHTML = p.innerHTML.replace(new RegExp(safeSel, "g"), highlighted);
+            try {
+              // Re-highlight that paragraph using existing logic (only flagged sentences will be wrapped)
+              highlightParagraph(p);
+            } catch (e) {
+              console.warn("Error highlighting paragraph for selection", e);
+            }
           }
         }
-
+  
+        // If nothing matched in our filtered paragraphs, try all <p> elements as a fallback
+        if (!found) {
+          const allP = Array.from(document.querySelectorAll("p"));
+          for (const p of allP) {
+            if (p.textContent.includes(selectionText)) {
+              found = true;
+              try { highlightParagraph(p); } catch (e) { console.warn(e); }
+            }
+          }
+        }
+  
         isHighlighting = false;
         sendResponse({ success: true, found });
       })();
-
+  
       return true;
     }
   });
