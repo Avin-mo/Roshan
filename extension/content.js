@@ -9,11 +9,9 @@ function extractArticleText() {
       paragraphs = Array.from(document.querySelectorAll("p"));
     }
   
-    const cleaned = paragraphs
+    return paragraphs
       .map((p) => p.innerText.trim())
       .filter((text) => text.length > 40);
-  
-    return cleaned;
   }
   
   function splitIntoSentences(paragraphs) {
@@ -29,14 +27,35 @@ function extractArticleText() {
       const paragraphs = extractArticleText();
       const sentences = splitIntoSentences(paragraphs);
   
-      console.log("Roshan paragraphs:", paragraphs);
-      console.log("Roshan sentences:", sentences);
+      fetch("http://127.0.0.1:8000/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          url: window.location.href,
+          title: document.title,
+          sentences: sentences
+        })
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log("Backend response:", data);
   
-      sendResponse({
-        paragraphCount: paragraphs.length,
-        sentenceCount: sentences.length,
-        paragraphs,
-        sentences
-      });
+          sendResponse({
+            paragraphCount: paragraphs.length,
+            sentenceCount: sentences.length,
+            backendData: data
+          });
+        })
+        .catch((error) => {
+          console.error("Backend error:", error);
+  
+          sendResponse({
+            error: error.message
+          });
+        });
+  
+      return true;
     }
   });
