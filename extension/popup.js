@@ -2,7 +2,7 @@ const analyzeBtn = document.getElementById("analyzeBtn");
 const status = document.getElementById("status");
 
 analyzeBtn.addEventListener("click", async () => {
-  status.textContent = "Running...";
+  status.textContent = "Analyzing...";
 
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
@@ -13,16 +13,11 @@ analyzeBtn.addEventListener("click", async () => {
 
   chrome.tabs.sendMessage(tab.id, { type: "ANALYZE_ARTICLE" }, (response) => {
     if (chrome.runtime.lastError) {
-      status.textContent = "Could not connect to page.";
+      status.textContent = "Error.";
       console.error(chrome.runtime.lastError.message);
       return;
     }
 
-    if (!response) {
-      status.textContent = "No response from content script.";
-      return;
-    }
-
-    status.textContent = `Found ${response.paragraphCount} paragraphs, ${response.sentenceCount} sentences. Check console.`;
+    status.textContent = response?.success ? "Done." : "No response.";
   });
 });
