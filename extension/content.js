@@ -92,25 +92,3 @@ function extractArticleText() {
     const el = e.target && e.target.closest && e.target.closest('.roshan-highlight');
     hoveredHighlight = el || null;
   });
-
-  // When user presses 'd' while hovering a highlight, show the highlight details
-  document.addEventListener('keydown', (e) => {
-    try {
-      if (e.key && e.key.toLowerCase() === 'd') {
-        const active = document.activeElement;
-        if (active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA' || active.isContentEditable)) {
-          return; // don't interfere with typing
-        }
-
-        if (hoveredHighlight) {
-          const text = hoveredHighlight.textContent || '';
-          const tooltip = hoveredHighlight.getAttribute('data-tooltip') || '';
-          const details = `Text: ${text}\nTooltip: ${tooltip}`;
-          // Reuse the same UI as the context-menu details for now
-          alert(details);
-        }
-      }
-    } catch (err) {
-      console.warn('Error handling "d" key for highlight details', err);
-    }
-  });
