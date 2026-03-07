@@ -75,6 +75,7 @@ function extractArticleParagraphs() {
       const labels = detectFlags(sentence);
   
       if (labels.length > 0) {
+        console.log("Found bad message...");
         const safeSentence = escapeRegExp(sentence);
   
         const tooltipText = labels.join(", ");
