@@ -1,31 +1,93 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Roshan</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        width: 220px;
-        padding: 12px;
-      }
+<head>
+<meta charset="UTF-8" />
+<title>Roshan</title>
 
-      button {
-        width: 100%;
-        padding: 10px;
-        font-size: 14px;
-        cursor: pointer;
-      }
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
 
-      #status {
-        margin-top: 10px;
-        font-size: 13px;
-      }
-    </style>
-  </head>
-  <body>
-    <button id="analyzeBtn">Analyze this page</button>
-    <div id="status"></div>
-    <script src="popup.js"></script>
-  </body>
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:'DM Sans',sans-serif;
+width:260px;
+background:#ffffff;
+color:#202124;
+padding:14px;
+}
+
+.header{
+font-size:14px;
+font-weight:600;
+margin-bottom:10px;
+}
+
+.divider{
+height:1px;
+background:#e0e0e0;
+margin:8px 0 12px 0;
+}
+
+button{
+width:100%;
+padding:10px;
+font-size:13px;
+font-weight:500;
+cursor:pointer;
+
+border-radius:8px;
+border:none;
+
+background:#1a73e8;
+color:white;
+
+transition:background .15s ease;
+}
+
+button:hover{
+background:#1765cc;
+}
+
+button:disabled{
+background:#c5c5c5;
+cursor:default;
+}
+
+#status{
+margin-top:10px;
+font-size:12px;
+color:#5f6368;
+min-height:16px;
+line-height:1.4;
+}
+
+.success{
+color:#188038;
+}
+
+.error{
+color:#d93025;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">Roshan Analyzer</div>
+<div class="divider"></div>
+
+<button id="analyzeBtn">Analyze this page</button>
+
+<div id="status"></div>
+
+<script src="popup.js"></script>
+
+</body>
 </html>
