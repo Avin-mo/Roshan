@@ -1,0 +1,40 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 40px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  color: #0077cc;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 30px;
+  font-weight: 400;
+  color: #555;
+}
+
+h3 {
+  color: #0077cc;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+}
+
+ul, ol {
+  padding-left: 20px;
+  margin-bottom: 30px;
+}
+
+li {
+  margin-bottom: 8px;
+}
