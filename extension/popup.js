@@ -33,3 +33,9 @@ analyzeBtn.addEventListener("click", async () => {
     console.log("Popup got response:", response);
   });
 });
+
+document.getElementById("header-link").addEventListener("click", () => {
+  chrome.tabs.create({
+    url: chrome.runtime.getURL("roshan_build/index.html")
+  });
+});
