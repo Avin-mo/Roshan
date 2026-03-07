@@ -3,8 +3,6 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 import re
-from Dbias.bias_classification import *
-from Dbias.bias_recognition import *
 
 
 app = FastAPI()
