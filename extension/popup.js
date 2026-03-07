@@ -13,11 +13,23 @@ analyzeBtn.addEventListener("click", async () => {
 
   chrome.tabs.sendMessage(tab.id, { type: "ANALYZE_ARTICLE" }, (response) => {
     if (chrome.runtime.lastError) {
-      status.textContent = "Error.";
+      status.textContent = "Could not connect to page.";
       console.error(chrome.runtime.lastError.message);
       return;
     }
 
-    status.textContent = response?.success ? "Done." : "No response.";
+    if (!response) {
+      status.textContent = "No response from content script.";
+      return;
+    }
+
+    if (response.error) {
+      status.textContent = `Error: ${response.error}`;
+      return;
+    }
+
+    const flaggedCount = response.backendData?.sentences?.length || 0;
+    status.textContent = `Found ${flaggedCount} flagged sentence(s).`;
+    console.log("Popup got response:", response);
   });
 });
