@@ -103,3 +103,33 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     return;
   }
 });
+
+// Handle requests from content script to call the backend.
+chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg?.type === "BACKEND_ANALYZE") {
+    const payload = msg.payload || {};
+
+    fetch("http://127.0.0.1:8000/analyze", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        url: payload.url || "",
+        title: payload.title || "",
+        sentences: payload.sentences || []
+      })
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        sendResponse({ data });
+      })
+      .catch((error) => {
+        console.error("Backend error from background:", error);
+        sendResponse({ error: error.message || "Backend request failed." });
+      });
+
+    // Keep the message channel open for async response
+    return true;
+  }
+});

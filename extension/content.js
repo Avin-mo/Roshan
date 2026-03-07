@@ -26,36 +26,44 @@ function extractArticleText() {
     if (message.type === "ANALYZE_ARTICLE") {
       const paragraphs = extractArticleText();
       const sentences = splitIntoSentences(paragraphs);
-  
-      fetch("http://127.0.0.1:8000/analyze", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+
+      // Ask the background script to talk to the backend so we avoid mixed-content
+      // issues on HTTPS pages.
+      chrome.runtime.sendMessage(
+        {
+          type: "BACKEND_ANALYZE",
+          payload: {
+            url: window.location.href,
+            title: document.title,
+            sentences
+          }
         },
-        body: JSON.stringify({
-          url: window.location.href,
-          title: document.title,
-          sentences: sentences
-        })
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log("Backend response:", data);
-  
+        (backendResponse) => {
+          if (chrome.runtime.lastError) {
+            console.error("Backend message error:", chrome.runtime.lastError);
+            sendResponse({ error: chrome.runtime.lastError.message });
+            return;
+          }
+
+          if (!backendResponse) {
+            sendResponse({ error: "No response from backend." });
+            return;
+          }
+
+          if (backendResponse.error) {
+            sendResponse({ error: backendResponse.error });
+            return;
+          }
+
           sendResponse({
             paragraphCount: paragraphs.length,
             sentenceCount: sentences.length,
-            backendData: data
+            backendData: backendResponse.data
           });
-        })
-        .catch((error) => {
-          console.error("Backend error:", error);
-  
-          sendResponse({
-            error: error.message
-          });
-        });
-  
+        }
+      );
+
+      // Keep the message channel open for async response
       return true;
     }
   });
