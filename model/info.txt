@@ -1,1 +1,8 @@
 If we want to train our own model to detect specific forms of biases, use this folder
+
+labels
+'neutral'
+`emotional_framing`
+`absolutist_language`
+`vague_or_unsupported_claims`
+`propaganda_style_language'
