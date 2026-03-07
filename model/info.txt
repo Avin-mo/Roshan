@@ -1,0 +1,1 @@
+If we want to train our own model to detect specific forms of biases, use this folder
