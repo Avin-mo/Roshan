@@ -139,9 +139,57 @@ function extractArticleParagraphs() {
     console.log("Roshan highlighting complete");
   }
   
+  let isHighlighting = false;
+
+  function waitForParagraphs(timeout = 5000, interval = 250) {
+    return new Promise((resolve) => {
+      const start = Date.now();
+      (function check() {
+        const paras = extractArticleParagraphs();
+        if (paras.length > 0) return resolve(paras);
+        if (Date.now() - start > timeout) return resolve(paras);
+        setTimeout(check, interval);
+      })();
+    });
+  }
+
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "ANALYZE_ARTICLE") {
-      runHighlighting();
-      sendResponse({ success: true });
+      (async () => {
+        // If an analysis is already running, clear existing highlights so user sees immediate feedback
+        if (isHighlighting) {
+          try {
+            removeOldHighlights();
+          } catch (e) {
+            console.warn("Error removing old highlights while another run was active", e);
+          }
+        }
+
+        isHighlighting = true;
+
+        // Ensure DOM is ready
+        if (document.readyState === "loading") {
+          await new Promise((res) => document.addEventListener("DOMContentLoaded", res, { once: true }));
+        }
+
+        // Clear any existing highlights immediately so user sees update
+        try {
+          removeOldHighlights();
+        } catch (e) {
+          console.warn("Error removing old highlights", e);
+        }
+
+        // Wait briefly for SPA/delayed content to appear
+        await waitForParagraphs(5000, 300);
+
+        runHighlighting();
+
+        isHighlighting = false;
+
+        sendResponse({ success: true });
+      })();
+
+      // Return true to indicate we'll call sendResponse asynchronously
+      return true;
     }
   });
