@@ -36,7 +36,21 @@ const lastHighlightContext = new Map(); // tabId -> { text, tooltip, ts }
 
 // Receive messages from the content script when a highlight is right-clicked
 chrome.runtime.onMessage.addListener((msg, sender) => {
-  if (msg?.type === "HIGHLIGHT_CONTEXT" && sender?.tab?.id) {
+  // ignore messages not from a tab
+  const tabId = sender?.tab?.id;
+  if (!tabId) return;
+
+  // If content script explicitly tells us the right-click wasn't on a highlight, hide menus now
+  if (msg?.type === "NO_HIGHLIGHT_CONTEXT") {
+    lastHighlightContext.delete(tabId);
+    try {
+      chrome.contextMenus.update("askGemini", { visible: false });
+      chrome.contextMenus.update("highlightDetails", { visible: false });
+    } catch (e) {}
+    return;
+  }
+
+  if (msg?.type === "HIGHLIGHT_CONTEXT") {
     const tabId = sender.tab.id;
     lastHighlightContext.set(tabId, { text: msg.text, tooltip: msg.tooltip || "", ts: Date.now() });
 
@@ -52,14 +66,14 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
     // Clear after 6s to avoid stale state
     setTimeout(() => {
       const entry = lastHighlightContext.get(tabId);
-      if (entry && Date.now() - entry.ts > 5000) {
+      if (entry && Date.now() - entry.ts > 500) {
         lastHighlightContext.delete(tabId);
         try {
           chrome.contextMenus.update("askGemini", { visible: false });
           chrome.contextMenus.update("highlightDetails", { visible: false });
         } catch (e) {}
       }
-    }, 6000);
+    }, 1000);
   }
 });
 
