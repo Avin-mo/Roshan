@@ -163,13 +163,19 @@ function tryHighlightInParagraph(paragraph, sentence, tooltip) {
   return true;
 }
 
+function formatLabel(label) {
+  return String(label || "")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
 function highlightSentence(item) {
   if (!item || !item.text) return false;
 
   const rawText = String(item.text).trim();
   if (!rawText) return false;
 
-  const tooltip = (item.labels || []).join(", ");
+  const tooltip = (item.labels || []).map(formatLabel).join(", ");
   const candidatePieces = splitIntoSentences(rawText);
   const pieces = candidatePieces.length > 1 ? candidatePieces : [rawText];
 
