@@ -12,23 +12,22 @@ export default function About() {
 
       <section className="aboutSection">
         <div className="sectionIcon">🎯</div>
-        <h2>The Problem</h2>
+        <h2>The Challenge</h2>
         <p>
-          Modern news often contains emotional framing and persuasive rhetoric 
-          that is difficult to detect while reading quickly. Readers are exposed 
-          to subtle manipulation techniques that can influence their perception 
-          without their awareness.
+          News articles often contain rhetorical patterns and framing techniques 
+          that can be difficult to notice while reading. Readers may benefit from 
+          additional reference information to better understand the language being used.
         </p>
       </section>
 
       <section className="aboutSection">
         <div className="sectionIcon">💡</div>
-        <h2>Our Solution</h2>
+        <h2>Our Approach</h2>
         <p>
-          Roshan is a Chrome extension that analyzes news articles and highlights
-          language that may signal bias, persuasion, or unsupported claims.
-          It helps readers recognize rhetorical patterns and better evaluate
-          the information they are reading.
+          Roshan is a Chrome extension that analyzes news articles using the 
+          Roshan processor to identify rhetorical patterns. It provides supplementary 
+          information and context as reference points, helping readers access 
+          additional perspectives on the content they're reading.
         </p>
       </section>
 
@@ -36,9 +35,9 @@ export default function About() {
         <div className="sectionIcon">🚀</div>
         <h2>Our Mission</h2>
         <p>
-          The goal is to help readers better understand persuasion techniques 
-          in online media, fostering a more informed and critical approach to 
-          news consumption. We believe transparency leads to better decision-making.
+          Our goal is to provide readers with additional reference information 
+          about rhetorical patterns in news media. We believe that access to 
+          supplementary context supports more informed reading and critical thinking.
         </p>
       </section>
     </div>
