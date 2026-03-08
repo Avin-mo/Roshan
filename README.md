@@ -1,2 +1,7 @@
 # Roshan
 cmd-f hackathon 2026
+
+This project is a Chrome extension that aims to identify biased phrases within text, particularly news articles, highlighting the text and identifying the type of bias to the reader. 
+
+The aim of this extension is to allow readers to think more critically about what they are reading and how specific words, phrasing, and framings can influence their perspective.
+
