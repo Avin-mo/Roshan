@@ -45,10 +45,10 @@ app.add_middleware(
 MODEL_DIR = Path(__file__).resolve().parents[1] / "model" / "saved_model"
 
 label_names = [
-    "emotional_framing",
-    "absolutist_language",
-    "vague_or_unsupported_claims",
-    "propaganda_style_language",
+    "emotional framing",
+    "absolutist language",
+    "unclear sources",
+    "propaganda style language",
 ]
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR.as_posix(), local_files_only=True)
@@ -126,7 +126,7 @@ def analyze_article(data: AnalyzeRequest):
 
         model_labels = [
             label for label, prob in model_scores.items()
-            if prob >= 0.5
+            if prob >= 0.6
         ]
 
         # Transformer-only decision: use model_labels only
