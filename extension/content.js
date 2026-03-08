@@ -228,6 +228,9 @@ document.addEventListener("mouseout", (e) => {
    Gemini popup widget
 ------------------------- */
 
+// Store the current context for follow-up questions
+let currentGeminiContext = { text: "", labels: [] };
+
 function ensureChatWidget() {
   if (document.getElementById("roshan-gemini-widget")) return;
 
@@ -242,9 +245,12 @@ function ensureChatWidget() {
   wrapper.style.zIndex = "2147483647";
   wrapper.style.fontFamily = "Arial, sans-serif";
 
+  // Insert a close button in the header and keep the rest of the widget markup
   wrapper.innerHTML = `
-    <div style="background:#111;color:#fff;padding:8px 12px;border-radius:8px 8px 0 0;">
-      Roshan — Gemini
+    <div style="background:#111;color:#fff;padding:8px 12px;border-radius:8px 8px 0 0;position:relative;">
+      <div style="font-weight:600">Roshan — Gemini</div>
+      <button id="roshan-gemini-close" title="Close" 
+        style="position:absolute;right:8px;top:6px;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;">×</button>
     </div>
 
     <div id="roshan-gemini-body"
@@ -265,6 +271,17 @@ function ensureChatWidget() {
 
   document.body.appendChild(wrapper);
 
+  // Hook up the close button to remove the widget and clear context
+  const closeBtn = document.getElementById("roshan-gemini-close");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      const w = document.getElementById("roshan-gemini-widget");
+      if (w) w.remove();
+      // clear stored follow-up context
+      currentGeminiContext = { text: "", labels: [] };
+    });
+  }
+
   const input = document.getElementById("roshan-gemini-input");
   const send = document.getElementById("roshan-gemini-send");
 
@@ -275,17 +292,37 @@ function ensureChatWidget() {
     appendToGeminiBody("You: " + q);
     input.value = "";
 
+    // Use followup endpoint with the stored context
     chrome.runtime.sendMessage(
-      { type: "ASK_GEMINI_REQUEST", text: q },
+      { 
+        type: "ASK_GEMINI_FOLLOWUP",
+        text: currentGeminiContext.text,
+        labels: currentGeminiContext.labels,
+        question: q
+      },
       (resp) => {
 
-        const explanation =
-          resp?.data?.explanation ||
-          resp?.data ||
-          resp?.error ||
-          "No response";
+        // Normalize response into a user-friendly string
+        let answer = "No response";
+        if (resp) {
+          if (resp.data && typeof resp.data === 'object') {
+            if (resp.data.answer) {
+              answer = String(resp.data.answer);
+            } else if (resp.data.explanation) {
+              answer = String(resp.data.explanation);
+            } else if (resp.data.error) {
+              answer = String(resp.data.error);
+            } else {
+              answer = JSON.stringify(resp.data);
+            }
+          } else if (typeof resp.data === 'string') {
+            answer = resp.data;
+          } else if (resp.error) {
+            answer = String(resp.error);
+          }
+        }
 
-        appendToGeminiBody("Gemini: " + explanation);
+        appendToGeminiBody("Gemini: " + answer);
       }
     );
   });
@@ -312,12 +349,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         console.log("ASK_GEMINI received");
 
         const text = message.text || "";
+        const labels = message.labels || [];
+
+        // Store context for follow-up questions
+        currentGeminiContext = { text, labels };
 
         ensureChatWidget();
         appendToGeminiBody("Selected: " + text.slice(0, 300));
 
         chrome.runtime.sendMessage(
-            { type: "ASK_GEMINI_REQUEST", text },
+            { type: "ASK_GEMINI_REQUEST", text, labels },
             (resp) => {
             if (chrome.runtime.lastError) {
                 appendToGeminiBody("Error: " + chrome.runtime.lastError.message);
@@ -325,8 +366,23 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 return;
             }
 
-            const explanation =
-                resp?.data?.explanation || resp?.data || resp?.error || "No response";
+            // Normalize response into a user-friendly string
+            let explanation = "No response";
+            if (resp) {
+              if (resp.data && typeof resp.data === 'object') {
+                if (resp.data.explanation) {
+                  explanation = String(resp.data.explanation);
+                } else if (resp.data.error) {
+                  explanation = String(resp.data.error);
+                } else {
+                  explanation = JSON.stringify(resp.data);
+                }
+              } else if (typeof resp.data === 'string') {
+                explanation = resp.data;
+              } else if (resp.error) {
+                explanation = String(resp.error);
+              }
+            }
 
             appendToGeminiBody("Gemini: " + explanation);
             sendResponse({ ok: true });

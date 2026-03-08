@@ -4,21 +4,27 @@ console.log('Roshan background script loaded');
 
 const lastHighlightContext = new Map(); // tabId -> { text, tooltip, ts }
 
-chrome.runtime.onInstalled.addListener(() => {
-  console.log('Roshan onInstalled fired (extension installed/updated)');
-
+// Create context menus on install AND on service worker startup
+function createContextMenus() {
   chrome.contextMenus.removeAll(() => {
-
     chrome.contextMenus.create({
       id: "analyzeSelection",
       title: "Analyze selected text",
       contexts: ["selection"]
+    }, () => {
+      if (chrome.runtime.lastError) {
+        console.log("Menu analyzeSelection:", chrome.runtime.lastError.message);
+      }
     });
 
     chrome.contextMenus.create({
       id: "analyzePage",
       title: "Analyze entire page",
       contexts: ["page"]
+    }, () => {
+      if (chrome.runtime.lastError) {
+        console.log("Menu analyzePage:", chrome.runtime.lastError.message);
+      }
     });
 
     chrome.contextMenus.create({
@@ -26,6 +32,10 @@ chrome.runtime.onInstalled.addListener(() => {
       title: "Highlight details",
       contexts: ["all"],
       visible: false
+    }, () => {
+      if (chrome.runtime.lastError) {
+        console.log("Menu highlightDetails:", chrome.runtime.lastError.message);
+      }
     });
 
     chrome.contextMenus.create({
@@ -33,11 +43,29 @@ chrome.runtime.onInstalled.addListener(() => {
       title: "Ask Gemini",
       contexts: ["all"],
       visible: false
+    }, () => {
+      if (chrome.runtime.lastError) {
+        console.log("Menu askGemini:", chrome.runtime.lastError.message);
+      }
     });
 
+    console.log("Roshan context menus created");
   });
+}
 
+chrome.runtime.onInstalled.addListener(() => {
+  console.log('Roshan onInstalled fired (extension installed/updated)');
+  createContextMenus();
 });
+
+// Also create menus when service worker starts up (handles browser restart)
+chrome.runtime.onStartup.addListener(() => {
+  console.log('Roshan onStartup fired (browser started)');
+  createContextMenus();
+});
+
+// Create menus immediately when script loads (covers reload scenarios)
+createContextMenus();
 
 
 /* -------------------------
@@ -141,7 +169,8 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
         tab.id,
         {
           type: "ASK_GEMINI",
-          text: entry.text
+          text: entry.text,
+          labels: entry.tooltip ? entry.tooltip.split(", ").map(s => s.trim()).filter(Boolean) : []
         },
         () => {
 
@@ -231,22 +260,92 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 
   if (msg?.type === "ASK_GEMINI_REQUEST") {
 
-    fetch("http://127.0.0.1:8001/explain", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        text: msg.text || "",
-        labels: msg.labels || []
-      })
-    })
-      .then(res => res.json())
-      .then(data => sendResponse({ data }))
-      .catch(err => {
-        console.error("Gemini request error:", err);
-        sendResponse({ error: err.message });
-      });
+    (async () => {
+      const endpoints = [
+        "http://127.0.0.1:8001/explain",
+        "http://localhost:8001/explain"
+      ];
+
+      let lastErr = null;
+
+      for (const url of endpoints) {
+        try {
+          const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ text: msg.text || "", labels: msg.labels || [] }),
+            mode: 'cors'
+          });
+
+          if (!res.ok) {
+            const txt = await res.text().catch(() => "");
+            throw new Error(`Server at ${url} responded ${res.status} ${res.statusText}: ${txt}`);
+          }
+
+          const data = await res.json().catch(() => ({ error: 'Invalid JSON from Gemini server' }));
+          sendResponse({ data });
+          return;
+
+        } catch (err) {
+          console.error("Gemini request attempt failed:", url, err);
+          lastErr = err;
+        }
+      }
+
+      // All attempts failed — return a clear, actionable error message
+      const errMsg = lastErr?.message || String(lastErr) || 'Unknown network error';
+      const hint = "Could not reach Gemini server at http://127.0.0.1:8001. Ensure the gemini Flask server is running (e.g. `python gemini/gemini.py`) and accessible, and that no local firewall is blocking requests. Try visiting http://127.0.0.1:8001/explain in your browser to verify.";
+      sendResponse({ error: `${errMsg}. ${hint}` });
+
+    })();
+
+    return true;
+  }
+
+  // Gemini follow-up questions
+
+  if (msg?.type === "ASK_GEMINI_FOLLOWUP") {
+
+    (async () => {
+      const endpoints = [
+        "http://127.0.0.1:8001/followup",
+        "http://localhost:8001/followup"
+      ];
+
+      let lastErr = null;
+
+      for (const url of endpoints) {
+        try {
+          const res = await fetch(url, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              text: msg.text || "",
+              labels: msg.labels || [],
+              question: msg.question || ""
+            }),
+            mode: 'cors'
+          });
+
+          if (!res.ok) {
+            const txt = await res.text().catch(() => "");
+            throw new Error(`Server at ${url} responded ${res.status} ${res.statusText}: ${txt}`);
+          }
+
+          const data = await res.json().catch(() => ({ error: 'Invalid JSON from Gemini server' }));
+          sendResponse({ data });
+          return;
+
+        } catch (err) {
+          console.error("Gemini followup attempt failed:", url, err);
+          lastErr = err;
+        }
+      }
+
+      const errMsg = lastErr?.message || String(lastErr) || 'Unknown network error';
+      sendResponse({ error: `${errMsg}. Could not reach Gemini server.` });
+
+    })();
 
     return true;
   }
