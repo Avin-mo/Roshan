@@ -97,11 +97,23 @@
 
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
   padding: 100px 60px;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
 }
 
 .featureCard {
