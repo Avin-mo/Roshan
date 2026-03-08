@@ -4,13 +4,13 @@ try {
   console.log("Roshan content script loaded");
 } catch (e) {}
 
-// expose helper to open Gemini widget from browser console for testing
-window.roshanOpenGemini = function (text) {
+// expose helper to open ChatGPT widget from browser console for testing
+window.roshanOpenChatGPT = function (text) {
   try {
     ensureChatWidget();
-    appendToGeminiBody("Manual: " + (text || "test"));
+    appendToChatBody("Manual: " + (text || "test"));
   } catch (e) {
-    console.warn("roshanOpenGemini error", e);
+    console.warn("roshanOpenChatGPT error", e);
   }
 };
 
@@ -84,6 +84,42 @@ function injectStyles() {
       box-shadow: 0 2px 8px rgba(0,0,0,0.25);
       pointer-events: none;
     }
+
+    /* Chat typing indicator */
+    .roshan-typing {
+      color: #444;
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .roshan-typing .dots {
+      display: inline-block;
+      width: 24px;
+      text-align: left;
+    }
+
+    .roshan-typing .dot {
+      display: inline-block;
+      animation: roshan-dot 1s steps(1,end) infinite;
+      opacity: 0.2;
+      margin-left: 2px;
+    }
+
+    .roshan-typing .dot:nth-child(1) { animation-delay: 0s; }
+    .roshan-typing .dot:nth-child(2) { animation-delay: 0.2s; }
+    .roshan-typing .dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes roshan-dot {
+      0% { opacity: 0.2; }
+      50% { opacity: 1; }
+      100% { opacity: 0.2; }
+    }
+
+    #roshan-chat-widget strong {
+  font-weight: 700 !important;
+}
   `;
 
   document.head.appendChild(style);
@@ -231,17 +267,17 @@ document.addEventListener("mouseout", (e) => {
 });
 
 /* -------------------------
-   Gemini popup widget
+   ChatGPT popup widget
 ------------------------- */
 
 // Store the current context for follow-up questions
-let currentGeminiContext = { text: "", labels: [] };
+let currentChatContext = { text: "", labels: [] };
 
 function ensureChatWidget() {
-  if (document.getElementById("roshan-gemini-widget")) return;
+  if (document.getElementById("roshan-chat-widget")) return;
 
   const wrapper = document.createElement("div");
-  wrapper.id = "roshan-gemini-widget";
+  wrapper.id = "roshan-chat-widget";
 
   wrapper.style.position = "fixed";
   wrapper.style.right = "16px";
@@ -254,21 +290,21 @@ function ensureChatWidget() {
   // Insert a close button in the header and keep the rest of the widget markup
   wrapper.innerHTML = `
     <div style="background:#111;color:#fff;padding:8px 12px;border-radius:8px 8px 0 0;position:relative;">
-      <div style="font-weight:600">Roshan — Gemini</div>
-      <button id="roshan-gemini-close" title="Close" 
+      <div style="font-weight:600">Roshan — <strong>ChatGPT</strong></div>
+      <button id="roshan-chat-close" title="Close" 
         style="position:absolute;right:8px;top:6px;background:none;border:none;color:#fff;font-size:20px;cursor:pointer;line-height:1;">×</button>
     </div>
 
-    <div id="roshan-gemini-body"
+    <div id="roshan-chat-body"
       style="background:#fff;border:1px solid #ddd;padding:12px;max-height:240px;overflow:auto;color:#111;font-size:13px;">
     </div>
 
     <div style="display:flex;border:1px solid #ddd;border-top:none;background:#fff;border-radius:0 0 8px 8px;">
-      <input id="roshan-gemini-input"
+      <input id="roshan-chat-input"
         placeholder="Ask for more details..."
         style="flex:1;padding:8px;border:none;outline:none;" />
 
-      <button id="roshan-gemini-send"
+      <button id="roshan-chat-send"
         style="border:none;background:#1a73e8;color:white;padding:8px 12px;cursor:pointer;">
         Send
       </button>
@@ -278,35 +314,43 @@ function ensureChatWidget() {
   document.body.appendChild(wrapper);
 
   // Hook up the close button to remove the widget and clear context
-  const closeBtn = document.getElementById("roshan-gemini-close");
+  const closeBtn = document.getElementById("roshan-chat-close");
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
-      const w = document.getElementById("roshan-gemini-widget");
+      const w = document.getElementById("roshan-chat-widget");
       if (w) w.remove();
       // clear stored follow-up context
-      currentGeminiContext = { text: "", labels: [] };
+      currentChatContext = { text: "", labels: [] };
     });
   }
 
-  const input = document.getElementById("roshan-gemini-input");
-  const send = document.getElementById("roshan-gemini-send");
+  const input = document.getElementById("roshan-chat-input");
+  const send = document.getElementById("roshan-chat-send");
 
   send.addEventListener("click", () => {
+    // Respect disabled state (locked while model is typing)
+    if (send.disabled) return;
     const q = (input.value || "").trim();
     if (!q) return;
 
-    appendToGeminiBody("You: " + q);
+    appendToChatBody("You: " + q);
     input.value = "";
+
+    // show typing indicator
+    showTyping();
 
     // Use followup endpoint with the stored context
     chrome.runtime.sendMessage(
       { 
-        type: "ASK_GEMINI_FOLLOWUP",
-        text: currentGeminiContext.text,
-        labels: currentGeminiContext.labels,
+        type: "ASK_GPT_FOLLOWUP",
+        text: currentChatContext.text,
+        labels: currentChatContext.labels,
         question: q
       },
       (resp) => {
+
+        // hide typing indicator
+        hideTyping();
 
         // Normalize response into a user-friendly string
         let answer = "No response";
@@ -328,19 +372,95 @@ function ensureChatWidget() {
           }
         }
 
-        appendToGeminiBody("Gemini: " + answer);
+        appendToChatBody("ChatGPT: " + answer);
       }
     );
   });
 }
 
-function appendToGeminiBody(text) {
-  const body = document.getElementById("roshan-gemini-body");
+function escapeHtml(str) {
+  return String(str || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function showTyping() {
+  const body = document.getElementById("roshan-chat-body");
   if (!body) return;
+  // Avoid duplicate
+  if (document.getElementById("roshan-chat-typing")) return;
+
+  const div = document.createElement("div");
+  div.id = "roshan-chat-typing";
+  div.className = "roshan-typing";
+  div.innerHTML = `<strong>ChatGPT</strong>: <span class="dots"><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></span>`;
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+
+  // Lock the chat input so the user can't send while the model is typing
+  const input = document.getElementById("roshan-chat-input");
+  const send = document.getElementById("roshan-chat-send");
+  if (input) {
+    input.disabled = true;
+    input.style.opacity = "0.6";
+  }
+  if (send) {
+    send.disabled = true;
+    send.style.opacity = "0.6";
+    send.style.cursor = "default";
+  }
+}
+
+function hideTyping() {
+  const t = document.getElementById("roshan-chat-typing");
+  if (t) t.remove();
+
+  // Unlock the chat input when typing stops
+  const input = document.getElementById("roshan-chat-input");
+  const send = document.getElementById("roshan-chat-send");
+  if (input) {
+    input.disabled = false;
+    input.style.opacity = "";
+  }
+  if (send) {
+    send.disabled = false;
+    send.style.opacity = "";
+    send.style.cursor = "pointer";
+  }
+}
+
+function appendToChatBody(text) {
+  const body = document.getElementById("roshan-chat-body");
+  if (!body) return;
+
+  hideTyping();
 
   const div = document.createElement("div");
   div.style.marginBottom = "8px";
-  div.textContent = text;
+
+  const str = String(text || '');
+
+  const prefixes = ["ChatGPT:", "You:", "Selected:"];
+
+  for (const p of prefixes) {
+    if (str.startsWith(p)) {
+
+      const strong = document.createElement("strong");
+      strong.textContent = p.replace(":", "");
+
+      div.appendChild(strong);
+      div.appendChild(document.createTextNode(": " + str.slice(p.length).trim()));
+
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+      return;
+    }
+  }
+
+  div.textContent = str;
 
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
@@ -351,26 +471,32 @@ function appendToGeminiBody(text) {
 ------------------------- */
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "ASK_GEMINI") {
-        console.log("ASK_GEMINI received");
+    if (message.type === "ASK_GPT") {
+        console.log("ASK_GPT received");
 
         const text = message.text || "";
         const labels = message.labels || [];
 
         // Store context for follow-up questions
-        currentGeminiContext = { text, labels };
+        currentChatContext = { text, labels };
 
         ensureChatWidget();
-        appendToGeminiBody("Selected: " + text.slice(0, 300));
+        appendToChatBody("Selected: " + text.slice(0, 300));
+
+        // show typing indicator
+        showTyping();
 
         chrome.runtime.sendMessage(
-            { type: "ASK_GEMINI_REQUEST", text, labels },
+            { type: "ASK_GPT_REQUEST", text, labels },
             (resp) => {
             if (chrome.runtime.lastError) {
-                appendToGeminiBody("Error: " + chrome.runtime.lastError.message);
+                appendToChatBody("Error: " + chrome.runtime.lastError.message);
                 sendResponse({ ok: false });
                 return;
             }
+
+            // hide typing indicator
+            hideTyping();
 
             // Normalize response into a user-friendly string
             let explanation = "No response";
@@ -390,7 +516,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
               }
             }
 
-            appendToGeminiBody("Gemini: " + explanation);
+            appendToChatBody("ChatGPT: " + explanation);
             sendResponse({ ok: true });
             }
         );
@@ -476,7 +602,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message.type === "HIGHLIGHT_DETAILS") {
-    alert("Text: " + (message.text || "") + "\n\nReason: " + (message.tooltip || ""));
+    alert("Text: " + (message.text || "") + "\n\nReason for highlight: " + (message.tooltip || ""));
     sendResponse({ success: true });
     return true;
   }
@@ -510,3 +636,43 @@ document.addEventListener("contextmenu", (e) => {
   }
 
 });
+
+/* -------------------------
+   Close ChatGPT widget helper and auto-close on page load
+------------------------- */
+
+function closeChatWidget() {
+  const w = document.getElementById("roshan-chat-widget");
+  if (w) w.remove();
+  // clear stored follow-up context
+  currentChatContext = { text: "", labels: [] };
+}
+
+// If the page is already loaded or becomes ready, close any existing widget immediately
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  // allow any other synchronous scripts to run first
+  setTimeout(() => closeChatWidget(), 0);
+} else {
+  document.addEventListener("DOMContentLoaded", () => closeChatWidget(), { once: true });
+}
+
+// Also observe DOM mutations to catch widgets inserted very early — remove once detected
+try {
+  // Only observe during the initial load period to catch widgets injected very early,
+  // then stop observing so user-triggered widgets are not removed.
+  if (document.readyState !== 'complete') {
+    const observer = new MutationObserver((mutations, obs) => {
+      if (document.getElementById("roshan-chat-widget")) {
+        closeChatWidget();
+        obs.disconnect();
+      }
+    });
+    observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    // Safety: stop observing after 3s
+    setTimeout(() => {
+      try { observer.disconnect(); } catch (e) {}
+    }, 3000);
+  }
+} catch (e) {
+  // Mutation observer might fail in some environments; ignore silently
+}

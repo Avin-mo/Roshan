@@ -31,10 +31,10 @@
 }
 
 .aboutSection {
-  margin-bottom: 60px;
-  padding: 40px;
+  margin-bottom: 36px; /* reduced from 60px to conserve space */
+  padding: 28px; /* reduced padding */
   background: var(--bg-secondary);
-  border-radius: 20px;
+  border-radius: 16px;
   border-left: 4px solid var(--primary);
   transition: all 0.3s ease;
   animation: fadeInUp 0.8s ease-out;
@@ -46,20 +46,34 @@
 }
 
 .sectionIcon {
-  font-size: 48px;
-  margin-bottom: 20px;
+  font-size: 28px;
+  margin-right: 10px;
+  vertical-align: middle;
+  display: inline-block;
 }
 
 .aboutSection h2 {
-  font-size: 32px;
+  font-size: 26px; /* slightly smaller */
   font-weight: 700;
-  margin-bottom: 16px;
+  margin-bottom: 12px; /* smaller gap */
   color: var(--text-primary);
   letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
 }
 
 .aboutSection p {
   color: var(--text-secondary);
-  line-height: 1.8;
-  font-size: 18px;
+  line-height: 1.6; /* slightly tighter */
+  font-size: 16px; /* slightly smaller */
+}
+
+.aboutCta {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.aboutCta .heroButton {
+  display: inline-block;
+  text-decoration: none;
 }

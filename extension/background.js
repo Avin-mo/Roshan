@@ -39,13 +39,13 @@ function createContextMenus() {
     });
 
     chrome.contextMenus.create({
-      id: "askGemini",
-      title: "Ask Gemini",
+      id: "askGPT",
+      title: "Ask OpenAI",
       contexts: ["all"],
       visible: false
     }, () => {
       if (chrome.runtime.lastError) {
-        console.log("Menu askGemini:", chrome.runtime.lastError.message);
+        console.log("Menu askGPT:", chrome.runtime.lastError.message);
       }
     });
 
@@ -83,7 +83,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
 
     try {
       chrome.contextMenus.update("highlightDetails", { visible: false });
-      chrome.contextMenus.update("askGemini", { visible: false });
+      chrome.contextMenus.update("askGPT", { visible: false });
     } catch (e) {}
 
     return;
@@ -99,7 +99,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
 
     try {
       chrome.contextMenus.update("highlightDetails", { visible: true });
-      chrome.contextMenus.update("askGemini", { visible: true });
+      chrome.contextMenus.update("askGPT", { visible: true });
     } catch (e) {}
 
     // hide again shortly to avoid stale menus
@@ -113,7 +113,7 @@ chrome.runtime.onMessage.addListener((msg, sender) => {
 
         try {
           chrome.contextMenus.update("highlightDetails", { visible: false });
-          chrome.contextMenus.update("askGemini", { visible: false });
+          chrome.contextMenus.update("askGPT", { visible: false });
         } catch (e) {}
 
       }
@@ -154,21 +154,21 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   }
 
   // highlight actions
-  if (info.menuItemId === "askGemini" || info.menuItemId === "highlightDetails") {
+  if (info.menuItemId === "askGPT" || info.menuItemId === "highlightDetails") {
 
     const entry = lastHighlightContext.get(tab.id);
     if (!entry) return;
 
     // --------------------
-    // ASK GEMINI
+    // ASK GPT / Open AI
     // --------------------
 
-    if (info.menuItemId === "askGemini") {
+    if (info.menuItemId === "askGPT") {
 
       chrome.tabs.sendMessage(
         tab.id,
         {
-          type: "ASK_GEMINI",
+          type: "ASK_GPT",
           text: entry.text,
           labels: entry.tooltip ? entry.tooltip.split(", ").map(s => s.trim()).filter(Boolean) : []
         },
@@ -184,7 +184,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
             }, () => {
 
               chrome.tabs.sendMessage(tab.id, {
-                type: "ASK_GEMINI",
+                type: "ASK_GPT",
                 text: entry.text
               });
 
@@ -213,7 +213,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
     try {
       chrome.contextMenus.update("highlightDetails", { visible: false });
-      chrome.contextMenus.update("askGemini", { visible: false });
+      chrome.contextMenus.update("askGPT", { visible: false });
     } catch (e) {}
 
     lastHighlightContext.delete(tab.id);
@@ -224,7 +224,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 
 
 /* -------------------------
-   Backend + Gemini proxy
+   Backend + GPT proxy
 ------------------------- */
 
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
@@ -256,9 +256,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     return true;
   }
 
-  // Gemini explanation
+  // GPT explanation
 
-  if (msg?.type === "ASK_GEMINI_REQUEST") {
+  if (msg?.type === "ASK_GPT_REQUEST") {
 
     (async () => {
       const endpoints = [
@@ -282,19 +282,19 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             throw new Error(`Server at ${url} responded ${res.status} ${res.statusText}: ${txt}`);
           }
 
-          const data = await res.json().catch(() => ({ error: 'Invalid JSON from Gemini server' }));
+          const data = await res.json().catch(() => ({ error: 'Invalid JSON from ChatGPT server' }));
           sendResponse({ data });
           return;
 
         } catch (err) {
-          console.error("Gemini request attempt failed:", url, err);
+          console.error("ChatGPT request attempt failed:", url, err);
           lastErr = err;
         }
       }
 
       // All attempts failed — return a clear, actionable error message
       const errMsg = lastErr?.message || String(lastErr) || 'Unknown network error';
-      const hint = "Could not reach Gemini server at http://127.0.0.1:8001. Ensure the gemini Flask server is running (e.g. `python gemini/gemini.py`) and accessible, and that no local firewall is blocking requests. Try visiting http://127.0.0.1:8001/explain in your browser to verify.";
+      const hint = "Could not reach the local ChatGPT proxy at http://127.0.0.1:8001. Ensure the local proxy server is running (e.g. `python gemini/gemini.py`) and accessible, and that no local firewall is blocking requests. Try visiting http://127.0.0.1:8001/explain in your browser to verify.";
       sendResponse({ error: `${errMsg}. ${hint}` });
 
     })();
@@ -302,9 +302,9 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     return true;
   }
 
-  // Gemini follow-up questions
+  // Follow-up questions via the local ChatGPT proxy
 
-  if (msg?.type === "ASK_GEMINI_FOLLOWUP") {
+  if (msg?.type === "ASK_GPT_FOLLOWUP") {
 
     (async () => {
       const endpoints = [
@@ -332,18 +332,18 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
             throw new Error(`Server at ${url} responded ${res.status} ${res.statusText}: ${txt}`);
           }
 
-          const data = await res.json().catch(() => ({ error: 'Invalid JSON from Gemini server' }));
+          const data = await res.json().catch(() => ({ error: 'Invalid JSON from ChatGPT server' }));
           sendResponse({ data });
           return;
 
         } catch (err) {
-          console.error("Gemini followup attempt failed:", url, err);
+          console.error("ChatGPT followup attempt failed:", url, err);
           lastErr = err;
         }
       }
 
       const errMsg = lastErr?.message || String(lastErr) || 'Unknown network error';
-      sendResponse({ error: `${errMsg}. Could not reach Gemini server.` });
+      sendResponse({ error: `${errMsg}. Could not reach the local ChatGPT proxy.` });
 
     })();
 

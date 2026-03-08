@@ -7,38 +7,44 @@ export default function DemoModal({ isOpen, onClose }) {
   const steps = [
     {
       title: "Step 1: Open a News Article",
-      instruction: "Navigate to any news article you want to analyze. Roshan works on most news websites.",
-      visual: "article"
+      instruction: "With Roshan enabled, navigate to any news article you want to analyze. Roshan works on most news websites.",
+      visual: "image",
+      imageSrc: "./demo-images/step1.png"
     },
     {
       title: "Step 2: Click the Extension",
       instruction: "Click the Roshan extension icon in your browser toolbar, then click 'Analyze this page'.",
-      visual: "extension"
+      visual: "image",
+      imageSrc: "./demo-images/step2.png"
     },
     {
-      title: "Step 3: Content Extraction",
-      instruction: "Roshan automatically extracts the article text and sends it for processing.",
+      title: "Step 3: Content Extraction & Analysis",
+      instruction: "Roshan extracts the article text and our DistilBERT model analyzes each sentence to detect:\n• Emotional framing\n• Absolutist language\n• Vague or unsupported claims\n• Propaganda-style language",
       visual: "extraction"
     },
     {
-      title: "Step 4: Text Analysis",
-      instruction: "The Roshan processor analyzes the text to identify:\n• Rhetorical patterns\n• Article topics\n• Named entities\n• Contextual information",
-      visual: "analysis"
-    },
-    {
-      title: "Step 5: View Highlights",
+      title: "Step 4: View Highlights",
       instruction: "Sentences with notable patterns are highlighted in the article. Intensity indicates processor confidence level.",
-      visual: "highlights"
+      visual: "image",
+      imageSrc: "./demo-images/step5.png"
     },
     {
-      title: "Step 6: Hover for Details",
-      instruction: "Hover over any highlighted sentence to see:\n• Detected patterns (absolutist language, vague claims, etc.)\n• Additional reference information",
-      visual: "hover"
+      title: "Step 5: Hover for Details",
+      instruction: "Hover over any highlighted sentence to see:\n• Detected patterns (absolutist language, vague claims, etc.)",
+      visual: "image",
+      imageSrc: "./demo-images/step6.png"
     },
     {
-      title: "Step 7: Check Side Panel",
-      instruction: "View the side panel for:\n• Pattern analysis summary\n• Topic information\n• Entity detection\n• Contextual details",
-      visual: "panel"
+      title: "Step 6: Right-Click Menu",
+      instruction: "Right-click on any highlighted text to access:\n• Ask OpenAI for explanation\n• View pattern details",
+      visual: "image",
+      imageSrc: "./demo-images/step7.png"
+    },
+    {
+      title: "Step 7: Ask OpenAI",
+      instruction: "If you selected 'Ask OpenAI', a chat widget will appear in the bottom-right corner of your page with a detailed breakdown of the rhetorical pattern. You can also send follow-up messages to ask further questions!",
+      visual: "image",
+      imageSrc: "./demo-images/step8.png"
     }
   ];
 
@@ -82,6 +88,7 @@ export default function DemoModal({ isOpen, onClose }) {
           <p className="demoInstruction">{step.instruction}</p>
           
           <div className="demoVisual">
+            {step.visual === 'image' && <img src={step.imageSrc} alt={step.title} />}
             {step.visual === 'article' && <ArticleVisual />}
             {step.visual === 'extension' && <ExtensionVisual />}
             {step.visual === 'extraction' && <ExtractionVisual />}
@@ -89,6 +96,7 @@ export default function DemoModal({ isOpen, onClose }) {
             {step.visual === 'highlights' && <HighlightsVisual />}
             {step.visual === 'hover' && <HoverVisual />}
             {step.visual === 'panel' && <PanelVisual />}
+            {step.visual === 'contextMenu' && <ContextMenuVisual />}
           </div>
         </div>
 
@@ -153,20 +161,26 @@ function ExtensionVisual() {
 function ExtractionVisual() {
   return (
     <div className="visualBox extractionBox">
-      <div className="extractionFlow">
-        <div className="flowItem">
-          <div className="flowIcon">📄</div>
-          <div className="flowLabel">Article Text</div>
+      <div className="analysisBox">
+        <div className="analysisItem">
+          <div className="analysisIcon">💭</div>
+          <div className="analysisText">Emotional Framing</div>
+          <div className="analysisProgress"><div style={{width: '85%'}}></div></div>
         </div>
-        <div className="flowArrow">→</div>
-        <div className="flowItem">
-          <div className="flowIcon spinning">⚙️</div>
-          <div className="flowLabel">Processing</div>
+        <div className="analysisItem">
+          <div className="analysisIcon">⚡</div>
+          <div className="analysisText">Absolutist Language</div>
+          <div className="analysisProgress"><div style={{width: '78%'}}></div></div>
         </div>
-        <div className="flowArrow">→</div>
-        <div className="flowItem">
-          <div className="flowIcon">🔍</div>
-          <div className="flowLabel">Backend</div>
+        <div className="analysisItem">
+          <div className="analysisIcon">❓</div>
+          <div className="analysisText">Vague Claims</div>
+          <div className="analysisProgress"><div style={{width: '82%'}}></div></div>
+        </div>
+        <div className="analysisItem">
+          <div className="analysisIcon">📢</div>
+          <div className="analysisText">Propaganda-Style</div>
+          <div className="analysisProgress"><div style={{width: '75%'}}></div></div>
         </div>
       </div>
     </div>
@@ -177,24 +191,24 @@ function AnalysisVisual() {
   return (
     <div className="visualBox analysisBox">
       <div className="analysisItem">
-        <div className="analysisIcon">🎯</div>
-        <div className="analysisText">Pattern Detection</div>
-        <div className="analysisProgress"><div style={{width: '75%'}}></div></div>
-      </div>
-      <div className="analysisItem">
-        <div className="analysisIcon">📊</div>
-        <div className="analysisText">Topic Analysis</div>
-        <div className="analysisProgress"><div style={{width: '90%'}}></div></div>
-      </div>
-      <div className="analysisItem">
-        <div className="analysisIcon">🏷️</div>
-        <div className="analysisText">Entity Detection</div>
+        <div className="analysisIcon">💭</div>
+        <div className="analysisText">Emotional Framing</div>
         <div className="analysisProgress"><div style={{width: '85%'}}></div></div>
       </div>
       <div className="analysisItem">
-        <div className="analysisIcon">✅</div>
-        <div className="analysisText">Context Gathering</div>
-        <div className="analysisProgress"><div style={{width: '70%'}}></div></div>
+        <div className="analysisIcon">⚡</div>
+        <div className="analysisText">Absolutist Language</div>
+        <div className="analysisProgress"><div style={{width: '78%'}}></div></div>
+      </div>
+      <div className="analysisItem">
+        <div className="analysisIcon">❓</div>
+        <div className="analysisText">Vague/Unsupported Claims</div>
+        <div className="analysisProgress"><div style={{width: '82%'}}></div></div>
+      </div>
+      <div className="analysisItem">
+        <div className="analysisIcon">📢</div>
+        <div className="analysisText">Propaganda-Style Language</div>
+        <div className="analysisProgress"><div style={{width: '75%'}}></div></div>
       </div>
     </div>
   );
@@ -258,6 +272,37 @@ function PanelVisual() {
             <div>• Government Officials</div>
             <div>• Organizations</div>
             <div>• Locations</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ContextMenuVisual() {
+  return (
+    <div className="visualBox contextMenuBox">
+      <div className="contextMenuDemo">
+        <p className="highlighted high contextTarget">
+          This sentence contains absolutist language that should be examined.
+        </p>
+        <div className="contextMenu">
+          <div className="contextMenuItem">
+            <span className="contextMenuIcon">🤖</span>
+            <span>Ask OpenAI</span>
+          </div>
+          <div className="contextMenuItem">
+            <span className="contextMenuIcon">🔍</span>
+            <span>View Pattern Details</span>
+          </div>
+          <div className="contextMenuItem">
+            <span className="contextMenuIcon">📚</span>
+            <span>Get More Context</span>
+          </div>
+          <div className="contextMenuDivider"></div>
+          <div className="contextMenuItem">
+            <span className="contextMenuIcon">📋</span>
+            <span>Copy Text</span>
           </div>
         </div>
       </div>

@@ -32,6 +32,7 @@ analyzeBtn.addEventListener("click", async () => {
       status.textContent = response.error.includes("fetch") || response.error.includes("Failed")
         ? "Backend not reachable. Is it running at http://127.0.0.1:8000?"
         : `Error: ${response.error}`;
+        console.log(response.error);
       return;
     }
 

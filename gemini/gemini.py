@@ -1,7 +1,7 @@
 import os
 import logging
 import re
-import google.generativeai as genai
+from openai import OpenAI
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -15,17 +15,20 @@ except Exception:
 logger = logging.getLogger(__name__)
 
 # Read API key from environment variable
-API_KEY = os.environ.get('GEMINI_API_KEY')
+API_KEY = os.environ.get('OPENAI_API_KEY')
 if not API_KEY:
-    # Do not configure genai without a key; the service will return errors when called
+    # Do not configure client without a key; the service will return errors when called
     # We keep the app running but will return a 500 when explain is called without a key.
-    genai_configured = False
+    openai_configured = False
+    client = None
 else:
-    genai.configure(api_key=API_KEY)
-    genai_configured = True
+    client = OpenAI(api_key=API_KEY)
+    openai_configured = True
 
-# Use an appropriate Gemini model
-MODEL_NAME = 'gemini-2.0-flash'
+# Use GPT-5-mini model
+MODEL_NAME = 'gpt-5-mini'
+# Human-friendly display name used in JSON responses
+MODEL_DISPLAY = 'ChatGPT'
 
 # Allow forcing a local rule-based explainer via env var for unlimited free usage
 FORCE_LOCAL_EXPLAIN = os.environ.get("FORCE_LOCAL_EXPLAIN", "false").lower() in ("1", "true", "yes")
@@ -46,24 +49,24 @@ def local_explain(sentence: str, labels: list) -> str:
     for label in labels:
         if label == "emotional_framing":
             if any(w in sl for w in ["must", "urgent", "immediately", "now", "today", "without delay"]):
-                parts.append("Uses urgent or emotionally charged framing (words like 'must' or 'urgent').")
+                parts.append("Contains urgent or emotionally charged framing (words like 'must' or 'urgent').")
             else:
-                parts.append("Contains emotionally framed language that pressures the reader.")
+                parts.append("Uses emotionally framed language that could pressure the reader.")
 
         elif label == "absolutist_language":
             if any(w in sl for w in ["always", "never", "everyone", "nobody", "all", "must"]):
-                parts.append("Uses absolutist terms that leave no room for nuance (e.g. 'always', 'never', 'must').")
+                parts.append("Uses absolutist terms that leave little room for nuance (e.g. 'always', 'never', 'must').")
             else:
                 parts.append("Presents claims in absolute terms without qualifiers.")
 
         elif label == "vague_or_unsupported_claims":
             if any(w in sl for w in ["experts", "studies show", "research shows", "reported", "according to"]):
-                parts.append("Makes a claim without citing evidence or specific sources.")
+                parts.append("Makes a claim without citing specific evidence or sources.")
             else:
-                parts.append("Contains a claim that is vague or lacks supporting evidence.")
+                parts.append("Contains a claim that is vague or lacks clear supporting evidence.")
 
         elif label == "propaganda_style_language":
-            parts.append("Uses propaganda-style or persuasive rhetoric intended to influence opinion.")
+            parts.append("Employs persuasive or propaganda-style rhetoric intended to influence opinion.")
 
         else:
             parts.append(f"Matches label '{label}'.")
@@ -88,8 +91,8 @@ def local_explain(sentence: str, labels: list) -> str:
 
 @app.route('/explain', methods=['POST'])
 def explain():
-    if not genai_configured and not FORCE_LOCAL_EXPLAIN:
-        return jsonify({'error': 'Gemini API key not configured on server.'}), 500
+    if not openai_configured and not FORCE_LOCAL_EXPLAIN:
+        return jsonify({'error': 'OpenAI API key not configured on server.'}), 500
 
     data = request.get_json(force=True)
     sentence = (data.get('text') or '').strip()
@@ -98,32 +101,41 @@ def explain():
     if not sentence:
         return jsonify({'error': 'No text provided.'}), 400
 
-    # If forced to use local explainer or genai isn't configured, return rule-based explanation
-    if FORCE_LOCAL_EXPLAIN or not genai_configured:
+    # If forced to use local explainer or openai isn't configured, return rule-based explanation
+    if FORCE_LOCAL_EXPLAIN or not openai_configured:
         explanation = local_explain(sentence, labels)
         return jsonify({'explanation': explanation, 'model': 'local_rule_based'})
 
-    # Otherwise attempt to call Gemini and fall back on any failure
-    prompt = (
-        "You are an assistant that explains why a sentence was flagged for the provided labels. "
-        "For each label in the list, produce a focused explanation (1–3 short sentences each), up to about 300 characters in total, that states why the sentence matches that label and — when possible — name the specific words or phrases in the sentence that triggered it. "
-        "Do NOT add advice, safety warnings, policy text, or any extra unrelated information. Only return the explanation itself.\n\n"
+    # Compose a system + user message to improve reliability and encourage structured output
+    system_msg = (
+        "You are a neutral, explanatory assistant that clarifies why short text snippets were flagged for specific rhetorical labels. "
+        "Be factual and non-judgmental; you may be slightly more descriptive when helpful. For each label, produce 2–4 short sentences. When referring to the sentence, quote the exact words or short phrases that triggered the label."
+    )
+
+    user_msg = (
         f"Labels: {labels}\n"
         f"Sentence: \"{sentence}\"\n\n"
-        "Answer:"
+        "Instructions: For each label return an object with the keys: 'label' (the label name), 'explanation' (2-4 short sentences), and 'highlights' (list of quoted substrings from the sentence that triggered the label, if any). "
+        "Return ONLY a JSON object with a top-level key 'explanations' whose value is a list of these objects. Do not include any additional commentary or extraneous text. "
+        "Aim to keep the response concise and under 600 tokens; you may use up to 725 tokens if necessary."
     )
 
     try:
-        model = genai.GenerativeModel(MODEL_NAME)
-        response = model.generate_content(prompt)
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": user_msg},
+            ],
+            temperature=0.2,
+            max_tokens=725,
+        )
 
-        # modern client exposes .text
-        explanation = getattr(response, 'text', None) or str(response)
-        explanation = str(explanation).strip()
-        return jsonify({'explanation': explanation, 'model': MODEL_NAME})
+        explanation = response.choices[0].message.content.strip()
+        return jsonify({'explanation': explanation, 'model': MODEL_DISPLAY})
 
     except Exception as e:
-        logger.exception("Gemini call failed, falling back to local explainer")
+        logger.exception("OpenAI call failed, falling back to local explainer")
         explanation = local_explain(sentence, labels)
         # return the fallback explanation but include a note for debugging
         return jsonify({'explanation': explanation, 'model': 'local_rule_based', 'note': str(e)})
@@ -138,8 +150,8 @@ def followup():
       - labels: list of labels
       - question: the user's follow-up question (e.g. "Which words triggered this?" or "Can you expand on propaganda language?")
     """
-    if not genai_configured and not FORCE_LOCAL_EXPLAIN:
-        return jsonify({'error': 'Gemini API key not configured on server.'}), 500
+    if not openai_configured and not FORCE_LOCAL_EXPLAIN:
+        return jsonify({'error': 'OpenAI API key not configured on server.'}), 500
 
     data = request.get_json(force=True)
     sentence = (data.get('text') or '').strip()
@@ -151,37 +163,40 @@ def followup():
     if not question:
         return jsonify({'error': 'No follow-up question provided.'}), 400
 
-    # If forced to use local explainer or genai isn't configured, use simple local fallback
-    if FORCE_LOCAL_EXPLAIN or not genai_configured:
+    # If forced to use local explainer or openai isn't configured, use simple local fallback
+    if FORCE_LOCAL_EXPLAIN or not openai_configured:
         # Provide a basic response using the existing local_explain function
         explanation = local_explain(sentence, labels)
-        return jsonify({'answer': f"(Local fallback - Gemini unavailable)\n\n{explanation}", 'model': 'local_rule_based'})
+        return jsonify({'answer': f"(Local fallback - OpenAI unavailable)\n\n{explanation}", 'model': 'local_rule_based'})
 
-    # Construct a follow-up prompt for Gemini
-    prompt = (
-        "You are an assistant that answers follow-up questions about why a sentence was flagged for specific rhetorical patterns. "
-        "You are given:\n"
-        "1. A sentence that was flagged\n"
-        "2. The labels it was flagged with\n"
-        "3. A follow-up question from the user\n\n"
-        "Answer the user's question directly and specifically. When asked 'how', 'which part', 'where', or 'in what way', "
-        "quote the exact words or phrases from the sentence that triggered each label. Be specific and concrete.\n\n"
-        "Do NOT repeat the label definitions. Do NOT add advice or warnings. Just answer the question.\n\n"
+    system_msg = (
+        "You are a neutral assistant answering a specific follow-up question about why a sentence was flagged. "
+        "When asked 'how', 'which part', 'where', or similar, quote the exact words or short phrases from the sentence that triggered the label and give a brief (1-3 sentence) explanation. You may provide slightly more descriptive context if it helps the user's understanding."
+    )
+
+    user_msg = (
         f"Sentence: \"{sentence}\"\n"
         f"Labels: {labels}\n"
         f"User question: \"{question}\"\n\n"
-        "Answer:"
+        "Instructions: Answer concisely and directly (1-3 short sentences). If quoting parts of the sentence, wrap them in double quotes. Do not repeat label definitions or add unrelated commentary. "
+        "Aim to keep the response concise and under 600 tokens; you may use up to 725 tokens if necessary."
     )
 
     try:
-        model = genai.GenerativeModel(MODEL_NAME)
-        response = model.generate_content(prompt)
-        answer = getattr(response, 'text', None) or str(response)
-        answer = str(answer).strip()
-        return jsonify({'answer': answer, 'model': MODEL_NAME})
+        response = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": user_msg},
+            ],
+            temperature=0.2,
+            max_tokens=725,
+        )
+        answer = response.choices[0].message.content.strip()
+        return jsonify({'answer': answer, 'model': MODEL_DISPLAY})
 
     except Exception as e:
-        logger.exception("Gemini follow-up call failed")
+        logger.exception("OpenAI follow-up call failed")
         return jsonify({'answer': f"Error: {str(e)}", 'model': 'error', 'note': str(e)})
 
 
@@ -190,8 +205,8 @@ def root():
     """Health check for debugging the extension connection."""
     return jsonify({
         'status': 'ok',
-        'genai_configured': bool(genai_configured),
-        'model': MODEL_NAME
+        'chatgpt_configured': bool(openai_configured),
+        'model': MODEL_DISPLAY
     }), 200
 
 

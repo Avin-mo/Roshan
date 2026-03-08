@@ -42,7 +42,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-MODEL_DIR = str(Path(__file__).resolve().parents[1] / "model" / "saved_model")
+MODEL_DIR = Path(__file__).resolve().parents[1] / "model" / "saved_model"
 
 label_names = [
     "emotional_framing",
@@ -51,8 +51,8 @@ label_names = [
     "propaganda_style_language",
 ]
 
-tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR, local_files_only=True)
-model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR, local_files_only=True)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR.as_posix(), local_files_only=True)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR.as_posix(), local_files_only=True)
 
 # Log model load
 logger.info(f"Loaded tokenizer and model from: {MODEL_DIR}")
