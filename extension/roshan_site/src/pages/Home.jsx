@@ -27,38 +27,26 @@ export default function Home() {
      <section className="features">
 
   <div className="featureCard">
-    <h3>Automated Article Analysis</h3>
-    <p>
-      Roshan extracts text from news articles and processes it using 
-      the Roshan processor to identify rhetorical patterns, topics, 
-      and contextual information.
-    </p>
-  </div>
-
-  <div className="featureCard">
-    <h3>Sentence-Level Highlighting</h3>
+    <h3>Real-Time Highlighting</h3>
     <p>
       Sentences with notable rhetorical patterns are highlighted directly
-      in the article. Highlight intensity represents the processor's confidence 
-      level in the detection.
+      in the article as you read, making it easy to spot potential bias.
     </p>
   </div>
 
   <div className="featureCard">
-    <h3>Contextual Information</h3>
+    <h3>Pattern Detection</h3>
     <p>
-      Hovering over highlighted sentences reveals detected patterns such as
-      absolutist language, vague claims, or emotional framing, providing 
-      additional reference points for readers.
+      Our AI identifies emotional framing, absolutist language, and vague 
+      claims to help you recognize persuasive techniques.
     </p>
   </div>
 
   <div className="featureCard">
-    <h3>Article-Level Insights</h3>
+    <h3>Interactive Explanations</h3>
     <p>
-      A side panel provides supplementary information about the article, 
-      including topic summaries, entity detection, and pattern analysis 
-      for additional reference.
+      Hover over highlights to see detected patterns, or right-click to ask 
+      Gemini AI for detailed explanations and context.
     </p>
   </div>
 
