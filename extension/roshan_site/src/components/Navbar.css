@@ -3,34 +3,60 @@
   justify-content: space-between;
   align-items: center;
 
-  padding: 16px 40px;
-  background-color: #ffffff;
+  padding: 20px 60px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
 
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid var(--border);
 
   position: sticky;
   top: 0;
   z-index: 100;
+
+  transition: all 0.3s ease;
 }
 
 .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #2c3e50;
+  font-size: 28px;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.5px;
 }
 
 .navLinks {
   display: flex;
-  gap: 30px;
+  gap: 40px;
+  align-items: center;
 }
 
 .navLinks a {
   text-decoration: none;
-  color: #333;
-  font-weight: 500;
-  transition: color 0.2s ease;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 8px 0;
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  transition: width 0.3s ease;
 }
 
 .navLinks a:hover {
-  color: #0077ff;
+  color: var(--primary);
+}
+
+.navLinks a:hover::after {
+  width: 100%;
 }

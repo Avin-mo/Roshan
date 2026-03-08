@@ -1,38 +1,65 @@
 .aboutPage {
   max-width: 900px;
   margin: auto;
-  padding: 80px 20px;
-
+  padding: 100px 40px;
   font-family: system-ui, Arial;
 }
 
 .aboutHeader {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .aboutHeader h1 {
-  font-size: 40px;
-  margin-bottom: 15px;
+  font-size: 56px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1.5px;
 }
 
-.aboutHeader p {
-  font-size: 18px;
-  color: #555;
+.aboutHeader .subtitle {
+  font-size: 22px;
+  color: var(--text-muted);
   line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .aboutSection {
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  padding: 40px;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  border-left: 4px solid var(--primary);
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.8s ease-out;
+}
+
+.aboutSection:hover {
+  transform: translateX(8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.sectionIcon {
+  font-size: 48px;
+  margin-bottom: 20px;
 }
 
 .aboutSection h2 {
-  font-size: 26px;
-  margin-bottom: 10px;
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
 }
 
 .aboutSection p {
-  color: #555;
-  line-height: 1.7;
-  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 18px;
 }
