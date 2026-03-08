@@ -602,7 +602,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   }
 
   if (message.type === "HIGHLIGHT_DETAILS") {
-    alert("Text: " + (message.text || "") + "\n\nReason: " + (message.tooltip || ""));
+    alert("Text: " + (message.text || "") + "\n\nReason for highlight: " + (message.tooltip || ""));
     sendResponse({ success: true });
     return true;
   }
