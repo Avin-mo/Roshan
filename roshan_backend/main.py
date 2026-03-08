@@ -126,7 +126,7 @@ def analyze_article(data: AnalyzeRequest):
 
         model_labels = [
             label for label, prob in model_scores.items()
-            if prob >= 0.5
+            if prob >= 0.6
         ]
 
         # Transformer-only decision: use model_labels only
