@@ -1,60 +1,57 @@
+// content.js
+
+try {
+  console.log("Roshan content script loaded");
+} catch (e) {}
+
+// expose helper to open Gemini widget from browser console for testing
+window.roshanOpenGemini = function (text) {
+  try {
+    ensureChatWidget();
+    appendToGeminiBody("Manual: " + (text || "test"));
+  } catch (e) {
+    console.warn("roshanOpenGemini error", e);
+  }
+};
+
 function extractArticleParagraphs() {
-  let paragraphs = Array.from(document.querySelectorAll('article p'));
-  if (paragraphs.length === 0) paragraphs = Array.from(document.querySelectorAll('main p'));
-  if (paragraphs.length === 0) paragraphs = Array.from(document.querySelectorAll('p'));
+  let paragraphs = Array.from(document.querySelectorAll("article p"));
+  if (paragraphs.length === 0) paragraphs = Array.from(document.querySelectorAll("main p"));
+  if (paragraphs.length === 0) paragraphs = Array.from(document.querySelectorAll("p"));
 
   return paragraphs.filter((p) => {
-    const text = (p.innerText || '').trim();
+    const text = (p.innerText || "").trim();
     if (text.length < 40) return false;
 
     const lower = text.toLowerCase();
-    if (lower.includes('advertisement')) return false;
-    if (lower === 'read more') return false;
+    if (lower.includes("advertisement")) return false;
+    if (lower === "read more") return false;
     if (/^\d+\s+of\s+\d+/.test(lower)) return false;
-    if (lower.startsWith('(ap photo/')) return false;
+    if (lower.startsWith("(ap photo/")) return false;
 
     return true;
   });
 }
 
 function splitIntoSentences(text) {
-  const normalized = String(text || '')
-    .replace(/\r/g, '')
-    .replace(/\u00A0/g, ' ')
-    .replace(/[ \t]+\n/g, '\n')
-    .replace(/\n[ \t]+/g, '\n')
+  const normalized = String(text || "")
+    .replace(/\r/g, "")
+    .replace(/\u00A0/g, " ")
+    .replace(/[ \t]+\n/g, "\n")
+    .replace(/\n[ \t]+/g, "\n")
     .trim();
 
-  const sentences = normalized
+  return normalized
     .split(/(?<=[.!?؟]["'”’\)]?)\s+/)
     .map((s) => s.trim())
     .filter((s) => s.length > 0);
-
-  try {
-    console.log('splitIntoSentences ->', sentences);
-  } catch (e) {}
-
-  return sentences;
-}
-
-function escapeRegExp(string) {
-  return string.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-}
-
-function normalizeText(str) {
-  return String(str || '')
-    .replace(/\r/g, '')
-    .replace(/\u00A0/g, ' ')
-    .replace(/[“”]/g, '"')
-    .replace(/[‘’]/g, "'")
-    .replace(/\s+/g, ' ')
-    .trim();
 }
 
 function removeOldHighlights() {
-  document.querySelectorAll('.roshan-highlight').forEach((span) => {
+  document.querySelectorAll(".roshan-highlight").forEach((span) => {
     const parent = span.parentNode;
     if (!parent) return;
+
     while (span.firstChild) parent.insertBefore(span.firstChild, span);
     parent.removeChild(span);
     parent.normalize();
@@ -62,35 +59,30 @@ function removeOldHighlights() {
 }
 
 function injectStyles() {
-  if (document.getElementById('roshan-styles')) return;
+  if (document.getElementById("roshan-styles")) return;
 
-  const style = document.createElement('style');
-  style.id = 'roshan-styles';
+  const style = document.createElement("style");
+  style.id = "roshan-styles";
 
   style.textContent = `
     .roshan-highlight {
       background: rgba(255, 230, 0, 0.45);
       cursor: pointer;
-      position: relative;
       border-radius: 3px;
       padding: 1px 2px;
     }
 
-    .roshan-highlight:hover::after {
-      content: attr(data-tooltip);
-      position: absolute;
-      left: 0;
-      top: 100%;
-      margin-top: 6px;
+    .roshan-tooltip {
+      position: fixed;
       background: #111;
       color: white;
       padding: 6px 8px;
       border-radius: 6px;
       font-size: 12px;
-      white-space: normal;
       max-width: 320px;
       z-index: 2147483647;
       box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      pointer-events: none;
     }
   `;
 
@@ -100,7 +92,6 @@ function injectStyles() {
 function runHighlighting() {
   injectStyles();
   removeOldHighlights();
-  console.log('Roshan: cleared local highlights; backend will provide flagged sentences');
 }
 
 function waitForParagraphs(timeout = 5000, interval = 250) {
@@ -118,12 +109,11 @@ function waitForParagraphs(timeout = 5000, interval = 250) {
 
 function getArticleText() {
   return extractArticleParagraphs()
-    .map((p) => (p.innerText || '').trim())
+    .map((p) => (p.innerText || "").trim())
     .filter(Boolean)
-    .join('\n\n');
+    .join("\n\n");
 }
 
-// Helper: find text node and offset for a paragraph-wide index
 function findTextNodeAtIndex(root, index) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
   let node;
@@ -131,9 +121,11 @@ function findTextNodeAtIndex(root, index) {
 
   while ((node = walker.nextNode())) {
     const len = node.nodeValue ? node.nodeValue.length : 0;
+
     if (index <= cum + len - 1) {
       return { node, offset: index - cum };
     }
+
     cum += len;
   }
 
@@ -162,7 +154,7 @@ function tryHighlightInParagraph(paragraph, sentence, tooltip) {
 
   try {
     range.surroundContents(span);
-  } catch {
+  } catch (err) {
     const content = range.extractContents();
     span.appendChild(content);
     range.insertNode(span);
@@ -171,172 +163,280 @@ function tryHighlightInParagraph(paragraph, sentence, tooltip) {
   return true;
 }
 
-// Highlight a single flagged sentence object from backend: { text, labels }
 function highlightSentence(item) {
   if (!item || !item.text) return false;
 
   const rawText = String(item.text).trim();
   if (!rawText) return false;
 
-  const tooltip = (item.labels || []).join(', ');
+  const tooltip = (item.labels || []).join(", ");
   const candidatePieces = splitIntoSentences(rawText);
-
-  // If backend sent multiple sentences in one block, try each separately first.
   const pieces = candidatePieces.length > 1 ? candidatePieces : [rawText];
 
   const paragraphs = extractArticleParagraphs();
-  console.log('Trying to highlight...', rawText);
 
   for (const piece of pieces) {
     for (const p of paragraphs) {
-      if (tryHighlightInParagraph(p, piece, tooltip)) {
-        console.log('Highlighted:', piece);
-        return true;
-      }
+      try {
+        if (tryHighlightInParagraph(p, piece, tooltip)) {
+          return true;
+        }
+      } catch {}
     }
   }
 
-  console.log("Couldn't find...", rawText);
   return false;
 }
 
-// message handlers
+/* -------------------------
+   Tooltip logic
+------------------------- */
+
+let activeTooltip = null;
+
+document.addEventListener("mouseover", (e) => {
+  const el = e.target.closest?.(".roshan-highlight");
+  if (!el) return;
+
+  const text = el.getAttribute("data-tooltip");
+  if (!text) return;
+
+  const tooltip = document.createElement("div");
+  tooltip.className = "roshan-tooltip";
+  tooltip.textContent = text;
+
+  document.body.appendChild(tooltip);
+  activeTooltip = tooltip;
+
+  const rect = el.getBoundingClientRect();
+
+  tooltip.style.left = rect.left + "px";
+  tooltip.style.top = rect.bottom + 6 + "px";
+});
+
+document.addEventListener("mouseout", (e) => {
+  const el = e.target.closest?.(".roshan-highlight");
+  if (!el) return;
+
+  if (activeTooltip) {
+    activeTooltip.remove();
+    activeTooltip = null;
+  }
+});
+
+/* -------------------------
+   Gemini popup widget
+------------------------- */
+
+function ensureChatWidget() {
+  if (document.getElementById("roshan-gemini-widget")) return;
+
+  const wrapper = document.createElement("div");
+  wrapper.id = "roshan-gemini-widget";
+
+  wrapper.style.position = "fixed";
+  wrapper.style.right = "16px";
+  wrapper.style.bottom = "16px";
+  wrapper.style.width = "360px";
+  wrapper.style.maxWidth = "calc(100% - 32px)";
+  wrapper.style.zIndex = "2147483647";
+  wrapper.style.fontFamily = "Arial, sans-serif";
+
+  wrapper.innerHTML = `
+    <div style="background:#111;color:#fff;padding:8px 12px;border-radius:8px 8px 0 0;">
+      Roshan — Gemini
+    </div>
+
+    <div id="roshan-gemini-body"
+      style="background:#fff;border:1px solid #ddd;padding:12px;max-height:240px;overflow:auto;color:#111;font-size:13px;">
+    </div>
+
+    <div style="display:flex;border:1px solid #ddd;border-top:none;background:#fff;border-radius:0 0 8px 8px;">
+      <input id="roshan-gemini-input"
+        placeholder="Ask for more details..."
+        style="flex:1;padding:8px;border:none;outline:none;" />
+
+      <button id="roshan-gemini-send"
+        style="border:none;background:#1a73e8;color:white;padding:8px 12px;cursor:pointer;">
+        Send
+      </button>
+    </div>
+  `;
+
+  document.body.appendChild(wrapper);
+
+  const input = document.getElementById("roshan-gemini-input");
+  const send = document.getElementById("roshan-gemini-send");
+
+  send.addEventListener("click", () => {
+    const q = (input.value || "").trim();
+    if (!q) return;
+
+    appendToGeminiBody("You: " + q);
+    input.value = "";
+
+    chrome.runtime.sendMessage(
+      { type: "ASK_GEMINI_REQUEST", text: q },
+      (resp) => {
+
+        const explanation =
+          resp?.data?.explanation ||
+          resp?.data ||
+          resp?.error ||
+          "No response";
+
+        appendToGeminiBody("Gemini: " + explanation);
+      }
+    );
+  });
+}
+
+function appendToGeminiBody(text) {
+  const body = document.getElementById("roshan-gemini-body");
+  if (!body) return;
+
+  const div = document.createElement("div");
+  div.style.marginBottom = "8px";
+  div.textContent = text;
+
+  body.appendChild(div);
+  body.scrollTop = body.scrollHeight;
+}
+
+/* -------------------------
+   Messaging
+------------------------- */
+
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'ANALYZE_ARTICLE') {
-    (async () => {
-      try {
-        if (document.readyState === 'loading') {
-          await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
-        }
+    if (message.type === "ASK_GEMINI") {
+        console.log("ASK_GEMINI received");
 
-        await waitForParagraphs(5000, 250);
-        runHighlighting();
+        const text = message.text || "";
 
-        const articleText = getArticleText();
-        const articleSentences = splitIntoSentences(articleText);
+        ensureChatWidget();
+        appendToGeminiBody("Selected: " + text.slice(0, 300));
 
         chrome.runtime.sendMessage(
-          {
-            type: 'BACKEND_ANALYZE',
-            payload: {
-              url: window.location.href,
-              title: document.title,
-              sentences: articleSentences
-            }
-          },
-          (resp) => {
+            { type: "ASK_GEMINI_REQUEST", text },
+            (resp) => {
             if (chrome.runtime.lastError) {
-              console.error('Backend message error:', chrome.runtime.lastError);
-              sendResponse({ error: chrome.runtime.lastError.message });
-              return;
+                appendToGeminiBody("Error: " + chrome.runtime.lastError.message);
+                sendResponse({ ok: false });
+                return;
             }
 
-            try {
-              const flagged = resp?.data?.sentences;
-              if (Array.isArray(flagged) && flagged.length > 0) {
-                console.log('Backend flagged sentences:');
-                for (const s of flagged) {
-                  highlightSentence(s);
-                  console.log('- ', s.text, '| labels:', s.labels);
-                }
-              } else {
-                console.log('Backend returned no flagged sentences');
-              }
-            } catch (e) {
-              console.warn('Error logging backend flagged sentences', e);
-            }
+            const explanation =
+                resp?.data?.explanation || resp?.data || resp?.error || "No response";
 
-            sendResponse({ success: true, backendData: resp?.data });
-          }
+            appendToGeminiBody("Gemini: " + explanation);
+            sendResponse({ ok: true });
+            }
         );
-      } catch (err) {
-        console.error(err);
-        sendResponse({ success: false, error: String(err) });
+
+        return true;
+    }
+
+  if (message.type === "ANALYZE_ARTICLE") {
+    (async () => {
+
+      if (document.readyState === "loading") {
+        await new Promise((r) => document.addEventListener("DOMContentLoaded", r, { once: true }));
       }
+
+      await waitForParagraphs();
+
+      runHighlighting();
+
+      const articleText = getArticleText();
+      const sentences = splitIntoSentences(articleText);
+
+      chrome.runtime.sendMessage({
+        type: "BACKEND_ANALYZE",
+        payload: {
+          url: window.location.href,
+          title: document.title,
+          sentences
+        }
+      }, (resp) => {
+
+        const flagged = resp?.data?.sentences;
+
+        if (Array.isArray(flagged)) {
+          for (const s of flagged) {
+            highlightSentence(s);
+          }
+        }
+
+        sendResponse({ success: true });
+
+      });
+
     })();
 
     return true;
   }
 
-  if (message.type === 'ANALYZE_SELECTION') {
-    (async () => {
-      try {
-        if (document.readyState === 'loading') {
-          await new Promise((r) => document.addEventListener('DOMContentLoaded', r, { once: true }));
-        }
+  if (message.type === "ANALYZE_SELECTION") {
+    removeOldHighlights();
 
-        const sel = (message.text || '').trim();
-        if (!sel) {
-          sendResponse({ success: false, reason: 'empty_selection' });
-          return;
-        }
+    const sentences = splitIntoSentences(message.text || "");
 
-        removeOldHighlights();
-
-        chrome.runtime.sendMessage(
-          {
-            type: 'BACKEND_ANALYZE',
-            payload: {
-              url: window.location.href,
-              title: document.title,
-              sentences: splitIntoSentences(sel)
-            }
-          },
-          (resp) => {
-            if (chrome.runtime.lastError) {
-              console.error('Backend message error:', chrome.runtime.lastError);
-              sendResponse({ error: chrome.runtime.lastError.message });
-              return;
-            }
-
-            try {
-              const flagged = resp?.data?.sentences;
-              if (Array.isArray(flagged) && flagged.length > 0) {
-                for (const s of flagged) {
-                  highlightSentence(s);
-                }
-              }
-            } catch (e) {
-              console.warn('Error highlighting selection results', e);
-            }
-
-            sendResponse({ success: true, backendData: resp?.data });
-          }
-        );
-      } catch (err) {
-        console.error(err);
-        sendResponse({ success: false, error: String(err) });
+    chrome.runtime.sendMessage({
+      type: "BACKEND_ANALYZE",
+      payload: {
+        url: window.location.href,
+        title: document.title,
+        sentences
       }
-    })();
+    }, (resp) => {
+
+      const flagged = resp?.data?.sentences;
+
+      if (Array.isArray(flagged)) {
+        for (const s of flagged) {
+          highlightSentence(s);
+        }
+      }
+
+      sendResponse({ success: true });
+
+    });
 
     return true;
   }
 
-  if (message.type === 'HIGHLIGHT_DETAILS') {
-    alert('Text: ' + (message.text || '') + '\n\nReason: ' + (message.tooltip || ''));
+  if (message.type === "HIGHLIGHT_DETAILS") {
+    alert("Text: " + (message.text || "") + "\n\nReason: " + (message.tooltip || ""));
     sendResponse({ success: true });
     return true;
   }
+
 });
 
-// let background know when user right-clicks a highlight
-document.addEventListener('contextmenu', (e) => {
-  const target = e.target && e.target.closest ? e.target.closest('.roshan-highlight') : null;
+/* -------------------------
+   Context menu detection
+------------------------- */
+
+document.addEventListener("contextmenu", (e) => {
+
+  const target = e.target && e.target.closest
+    ? e.target.closest(".roshan-highlight")
+    : null;
+
   if (target) {
+
     chrome.runtime.sendMessage({
-      type: 'HIGHLIGHT_CONTEXT',
+      type: "HIGHLIGHT_CONTEXT",
       text: target.textContent,
-      tooltip: target.getAttribute('data-tooltip') || ''
+      tooltip: target.getAttribute("data-tooltip") || ""
     });
+
   } else {
-    chrome.runtime.sendMessage({ type: 'NO_HIGHLIGHT_CONTEXT' });
+
+    chrome.runtime.sendMessage({
+      type: "NO_HIGHLIGHT_CONTEXT"
+    });
+
   }
-});
 
-// Track the currently hovered highlight element
-let hoveredHighlight = null;
-
-document.addEventListener('mousemove', (e) => {
-  const el = e.target && e.target.closest && e.target.closest('.roshan-highlight');
-  hoveredHighlight = el || null;
 });
