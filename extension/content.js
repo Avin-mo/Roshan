@@ -136,6 +136,22 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             sendResponse({ error: chrome.runtime.lastError.message });
             return;
           }
+
+          // If backend returned flagged sentences, log each one and its labels
+          try {
+            const flagged = resp?.data?.sentences;
+            if (Array.isArray(flagged) && flagged.length > 0) {
+              console.log('Backend flagged sentences:');
+              for (const s of flagged) {
+                console.log('- ', s.text, '| labels:', s.labels);
+              }
+            } else {
+              console.log('Backend returned no flagged sentences');
+            }
+          } catch (e) {
+            console.warn('Error logging backend flagged sentences', e);
+          }
+
           sendResponse({ success: true, backendData: resp?.data });
         });
       } catch (err) {

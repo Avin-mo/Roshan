@@ -81,9 +81,10 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (!tab?.id) return;
 
   if (info.menuItemId === "analyzeSelection") {
+    // Send ANALYZE_ARTICLE with a selection payload so the content script uses the same backend flow
     chrome.tabs.sendMessage(tab.id, {
-      type: "ANALYZE_SELECTION",
-      text: info.selectionText
+      type: "ANALYZE_ARTICLE",
+      selection: info.selectionText || ""
     });
 
     return;
