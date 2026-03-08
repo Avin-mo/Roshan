@@ -6,10 +6,10 @@ ROOT = Path(__file__).resolve().parent
 MODEL_DIR = ROOT / "saved_model"
 
 label_names = [
-    "emotional_framing",
-    "absolutist_language",
-    "vague_or_unsupported_claims",
-    "propaganda_style_language",
+    "emotional framing",
+    "absolutist language",
+    "vague or unsupported claims",
+    "propaganda style language",
 ]
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
