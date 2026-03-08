@@ -367,7 +367,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           }
         }
 
-        sendResponse({ success: true });
+        sendResponse({
+          success: !resp?.error,
+          backendData: resp?.data,
+          error: resp?.error
+        });
 
       });
 
@@ -398,7 +402,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }
       }
 
-      sendResponse({ success: true });
+      sendResponse({
+        success: !resp?.error,
+        backendData: resp?.data,
+        error: resp?.error
+      });
 
     });
 
