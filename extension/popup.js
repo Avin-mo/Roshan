@@ -13,7 +13,12 @@ analyzeBtn.addEventListener("click", async () => {
 
   chrome.tabs.sendMessage(tab.id, { type: "ANALYZE_ARTICLE" }, (response) => {
     if (chrome.runtime.lastError) {
-      status.textContent = "Could not connect to page.";
+      const msg = chrome.runtime.lastError.message || "";
+      if (msg.includes("Receiving end does not exist") || msg.includes("message port closed")) {
+        status.textContent = "Could not connect to page. Use a normal webpage (not chrome://, New Tab, or extension pages).";
+      } else {
+        status.textContent = "Could not connect to page. " + (msg ? msg + "." : "Try reloading the page and the extension.");
+      }
       console.error(chrome.runtime.lastError.message);
       return;
     }
@@ -24,7 +29,9 @@ analyzeBtn.addEventListener("click", async () => {
     }
 
     if (response.error) {
-      status.textContent = `Error: ${response.error}`;
+      status.textContent = response.error.includes("fetch") || response.error.includes("Failed")
+        ? "Backend not reachable. Is it running at http://127.0.0.1:8000?"
+        : `Error: ${response.error}`;
       return;
     }
 
