@@ -8,43 +8,38 @@ export default function DemoModal({ isOpen, onClose }) {
     {
       title: "Step 1: Open a News Article",
       instruction: "With Roshan enabled, navigate to any news article you want to analyze. Roshan works on most news websites.",
-      visual: "image",
-      imageSrc: "./demo-images/step1.png"
+      visual: "video",
+      videoSrc: "./demo-videos/step1.mp4"
     },
     {
       title: "Step 2: Click the Extension",
       instruction: "Click the Roshan extension icon in your browser toolbar, then click 'Analyze this page'.",
-      visual: "image",
-      imageSrc: "./demo-images/step2.png"
+      visual: "video",
+      videoSrc: "./demo-videos/step2.mp4"
     },
     {
       title: "Step 3: Content Extraction & Analysis",
       instruction: "Roshan extracts the article text and our DistilBERT model analyzes each sentence to detect:\n• Emotional framing\n• Absolutist language\n• Vague or unsupported claims\n• Propaganda-style language",
-      visual: "extraction"
+      visual: "video",
+      videoSrc: "./demo-videos/step3.mp4"
     },
     {
-      title: "Step 4: View Highlights",
-      instruction: "Sentences with notable patterns are highlighted in the article. Intensity indicates processor confidence level.",
-      visual: "image",
-      imageSrc: "./demo-images/step5.png"
+      title: "Step 4: View Highlights & Hover for Details",
+      instruction: "Sentences with notable patterns are highlighted in the article. Hover over any highlight to see the detected patterns.",
+      visual: "video",
+      videoSrc: "./demo-videos/step4.mp4"
     },
     {
-      title: "Step 5: Hover for Details",
-      instruction: "Hover over any highlighted sentence to see:\n• Detected patterns (absolutist language, vague claims, etc.)",
-      visual: "image",
-      imageSrc: "./demo-images/step6.png"
-    },
-    {
-      title: "Step 6: Right-Click Menu",
+      title: "Step 5: Right-Click Menu",
       instruction: "Right-click on any highlighted text to access:\n• Ask OpenAI for explanation\n• View pattern details",
-      visual: "image",
-      imageSrc: "./demo-images/step7.png"
+      visual: "video",
+      videoSrc: "./demo-videos/step5.mp4"
     },
     {
-      title: "Step 7: Ask OpenAI",
+      title: "Step 6: Ask OpenAI",
       instruction: "If you selected 'Ask OpenAI', a chat widget will appear in the bottom-right corner of your page with a detailed breakdown of the rhetorical pattern. You can also send follow-up messages to ask further questions!",
-      visual: "image",
-      imageSrc: "./demo-images/step8.png"
+      visual: "video",
+      videoSrc: "./demo-videos/step6.mp4"
     }
   ];
 
@@ -88,6 +83,17 @@ export default function DemoModal({ isOpen, onClose }) {
           <p className="demoInstruction">{step.instruction}</p>
           
           <div className="demoVisual">
+            {step.visual === 'video' && (
+              <video 
+                key={step.videoSrc}
+                src={step.videoSrc} 
+                autoPlay 
+                loop 
+                muted 
+                playsInline
+                className="demoVideo"
+              />
+            )}
             {step.visual === 'image' && <img src={step.imageSrc} alt={step.title} />}
             {step.visual === 'article' && <ArticleVisual />}
             {step.visual === 'extension' && <ExtensionVisual />}

@@ -49,7 +49,10 @@ export default function Home() {
           detailed, contextual explanations with a single click.
         </p>
 
-        <Link to="/about" className="heroButton">Learn More</Link>
+        <div className="heroButtons">
+          <Link to="/about" className="heroButton">Learn More</Link>
+          <button className="heroButton heroButtonSecondary" onClick={() => setIsDemoOpen(true)}>View Step-by-Step Demo</button>
+        </div>
       </section>
 
      <section className="features">
@@ -106,7 +109,7 @@ export default function Home() {
             powered by the OpenAI API.
           </li>
         </ol>
-        <button className="heroButton" onClick={() => setIsDemoOpen(true)}>More Details</button>
+        <button className="heroButton" onClick={() => setIsDemoOpen(true)}>More Details + See Step-by-Step Demo</button>
       </section>
 
       {/* Floating down arrow shown until user reaches bottom of page */}
