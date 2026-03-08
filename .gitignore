@@ -1,0 +1,19 @@
+# Model artifacts (too large for Git; use Git LFS or store elsewhere)
+model/saved_model/
+model/results/
+*.safetensors
+*.pt
+*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+.venv/
+venv/
+
+# IDE / OS
+.DS_Store
+.idea/
+*.swp
+*.swo
