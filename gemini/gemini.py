@@ -116,7 +116,8 @@ def explain():
         f"Labels: {labels}\n"
         f"Sentence: \"{sentence}\"\n\n"
         "Instructions: For each label return an object with the keys: 'label' (the label name), 'explanation' (2-4 short sentences), and 'highlights' (list of quoted substrings from the sentence that triggered the label, if any). "
-        "Return ONLY a JSON object with a top-level key 'explanations' whose value is a list of these objects. Do not include any additional commentary or extraneous text."
+        "Return ONLY a JSON object with a top-level key 'explanations' whose value is a list of these objects. Do not include any additional commentary or extraneous text. "
+        "Aim to keep the response concise and under 600 tokens; you may use up to 725 tokens if necessary."
     )
 
     try:
@@ -127,7 +128,7 @@ def explain():
                 {"role": "user", "content": user_msg},
             ],
             temperature=0.2,
-            max_tokens=600,
+            max_tokens=725,
         )
 
         explanation = response.choices[0].message.content.strip()
@@ -177,7 +178,8 @@ def followup():
         f"Sentence: \"{sentence}\"\n"
         f"Labels: {labels}\n"
         f"User question: \"{question}\"\n\n"
-        "Instructions: Answer concisely and directly (1-3 short sentences). If quoting parts of the sentence, wrap them in double quotes. Do not repeat label definitions or add unrelated commentary."
+        "Instructions: Answer concisely and directly (1-3 short sentences). If quoting parts of the sentence, wrap them in double quotes. Do not repeat label definitions or add unrelated commentary. "
+        "Aim to keep the response concise and under 600 tokens; you may use up to 725 tokens if necessary."
     )
 
     try:
@@ -188,7 +190,7 @@ def followup():
                 {"role": "user", "content": user_msg},
             ],
             temperature=0.2,
-            max_tokens=600,
+            max_tokens=725,
         )
         answer = response.choices[0].message.content.strip()
         return jsonify({'answer': answer, 'model': MODEL_DISPLAY})
