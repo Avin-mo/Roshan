@@ -44,6 +44,6 @@ analyzeBtn.addEventListener("click", async () => {
 
 document.getElementById("header-link").addEventListener("click", () => {
   chrome.tabs.create({
-    url: chrome.runtime.getURL("roshan_build/index.html")
+    url: "https://amroshananalyze.tech"
   });
 });
