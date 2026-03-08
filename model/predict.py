@@ -15,7 +15,7 @@ label_names = [
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
 
-text = "Trump and first lady attend dignified transfer for 6 US troops killed in Kuwait."
+text = "In a post on Truth Social, Trump said: \"The United Kingdom, our once Great Ally, maybe the Greatest of them all, is finally giving serious thought to sending two aircraft carriers to the Middle East.\""
 
 inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
 with torch.no_grad():
