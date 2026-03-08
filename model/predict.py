@@ -15,7 +15,7 @@ label_names = [
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
 
-text = "Olympic hero Hughes’ hat trick sparks “U-S-A, U-S-A” chants as Devils win fourth straight."
+text = "Trump and first lady attend dignified transfer for 6 US troops killed in Kuwait."
 
 inputs = tokenizer(text, return_tensors="pt", truncation=True, padding=True)
 with torch.no_grad():
