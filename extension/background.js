@@ -1,8 +1,11 @@
 // background.js (service worker)
 
+console.log('Roshan background script loaded');
+
 const lastHighlightContext = new Map(); // tabId -> { text, tooltip, ts }
 
 chrome.runtime.onInstalled.addListener(() => {
+  console.log('Roshan onInstalled fired (extension installed/updated)');
 
   chrome.contextMenus.removeAll(() => {
 

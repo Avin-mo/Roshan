@@ -1,11 +1,36 @@
 from pathlib import Path
 from typing import List
+import os
 
 import torch
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import logging
+import time
+
+# Configure logger for the backend
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("roshan_backend")
+
+# If running under uvicorn, reuse uvicorn's handlers so logs appear in the console
+try:
+    uv_logger = logging.getLogger("uvicorn.error")
+    if uv_logger.handlers:
+        logger.handlers = uv_logger.handlers
+        logger.setLevel(uv_logger.level)
+    else:
+        ch = logging.StreamHandler()
+        ch.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
+        logger.addHandler(ch)
+except Exception:
+    # best-effort; don't crash the server if logging tweak fails
+    pass
+
+# Respect environment flag to enable rule-based labels; default to transformer-only
+USE_RULE_LABELS = os.environ.get('USE_RULE_LABELS', 'false').lower() in ('1', 'true', 'yes')
+logger.info(f"USE_RULE_LABELS set to: {USE_RULE_LABELS}")
 
 app = FastAPI()
 
@@ -29,6 +54,9 @@ label_names = [
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL_DIR)
 
+# Log model load
+logger.info(f"Loaded tokenizer and model from: {MODEL_DIR}")
+
 class AnalyzeRequest(BaseModel):
     url: str
     title: str
@@ -37,25 +65,6 @@ class AnalyzeRequest(BaseModel):
 @app.get("/")
 def root():
     return {"message": "Roshan backend is running"}
-
-def detect_rule_labels(sentence: str):
-    labels = []
-    lower = sentence.lower()
-
-    absolutist_words = ["everyone", "always", "never", "definitely", "no one"]
-    vague_claim_phrases = ["experts say", "many believe", "it is said", "sources claim"]
-    emotional_words = ["destroy", "disaster", "crisis", "betrayal", "threat", "shocking"]
-
-    if any(word in lower for word in absolutist_words):
-        labels.append("absolutist_language")
-
-    if any(phrase in lower for phrase in vague_claim_phrases):
-        labels.append("vague_or_unsupported_claims")
-
-    if any(word in lower for word in emotional_words):
-        labels.append("emotional_framing")
-
-    return labels
 
 def score_sentence(sentence: str):
     inputs = tokenizer(sentence, return_tensors="pt", truncation=True, padding=True)
@@ -71,6 +80,7 @@ def score_sentences_batch(sentences: List[str], batch_size: int = 32):
     if not sentences:
         return []
 
+    t0 = time.time()
     all_scores = []
     for start in range(0, len(sentences), batch_size):
         batch = sentences[start : start + batch_size]
@@ -91,12 +101,17 @@ def score_sentences_batch(sentences: List[str], batch_size: int = 32):
                 {label: float(prob) for label, prob in zip(label_names, row)}
             )
 
+    duration = time.time() - t0
+    logger.info(f"Model inference for {len(sentences)} sentences completed in {duration:.3f}s")
     return all_scores
 
 @app.post("/analyze")
 def analyze_article(data: AnalyzeRequest):
+    t_start = time.time()
     flagged_sentences = []
     overall = set()
+
+    logger.info(f"Analyze request received: url={data.url}, title_len={len(data.title or '')}, num_sentences={len(data.sentences or [])}")
 
     if not data.sentences:
         return {
@@ -114,9 +129,8 @@ def analyze_article(data: AnalyzeRequest):
             if prob >= 0.5
         ]
 
-        rule_labels = detect_rule_labels(sentence)
-
-        combined_labels = sorted(set(model_labels + rule_labels))
+        # Transformer-only decision: use model_labels only
+        combined_labels = sorted(set(model_labels))
 
         if combined_labels:
             flagged_sentences.append({
@@ -125,12 +139,19 @@ def analyze_article(data: AnalyzeRequest):
                 "labels": combined_labels,
                 "confidence": max(model_scores.values()) if model_scores else 0.0,
                 "scores": model_scores,
-                "rule_labels": rule_labels,
                 "model_labels": model_labels,
             })
 
             for label in combined_labels:
                 overall.add(label)
+            # Log detected labels and scores for this sentence
+            snippet = (sentence[:120] + '...') if len(sentence) > 120 else sentence
+            logger.info(
+                f"Flagged s{i+1}: labels={combined_labels}, confidence={max(model_scores.values()) if model_scores else 0.0:.3f}, model_labels={model_labels}, snippet=\"{snippet}\""
+            )
+
+    t_end = time.time()
+    logger.info(f"Analysis complete: total_sentences={len(data.sentences)}, flagged={len(flagged_sentences)}, total_time={t_end - t_start:.3f}s")
 
     return {
         "overall_risk_indicators": list(overall),
