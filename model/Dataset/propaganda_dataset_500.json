@@ -1,0 +1,6210 @@
+[
+  {
+    "text": "Look how they twist facts to confuse the people.",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values.",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan.!",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan. (details inside)",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth.",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure.",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A software update is now available for all users. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure. - witness report",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision.",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Look how they twist facts to confuse the people. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for.!",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match.!",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan., say sources",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity.",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan. - breaking news",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday.!",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values., say sources",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure. - experts claim",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move.",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A software update is now available for all users.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long.",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan. - witness report",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move. (details inside)",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him. (details inside)",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter.!",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A software update is now available for all users. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies.!",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Look how they twist facts to confuse the people. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall.!",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan. - unconfirmed",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future.",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Look how they twist facts to confuse the people., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move., say sources",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines.",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move. - breaking news",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "They want to control your thoughts with lies. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values. (details inside)",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Look how they twist facts to confuse the people. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values. - witness report",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A software update is now available for all users. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move. - report says",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure. - report says",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him. - experts claim",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A rare astronomical event will be visible tonight. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values. - unconfirmed",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "A software update is now available for all users., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A software update is now available for all users. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan. - report says",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him.",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A software update is now available for all users. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure. (details inside)",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure., say sources",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The media is run by traitors hiding the truth. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A software update is now available for all users. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future. - breaking news",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Look how they twist facts to confuse the people. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move. - unconfirmed",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him. - breaking news",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values. - breaking news",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "If we don\u2019t act now, our children will suffer. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The latest smartphone model features improved battery life. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values. - report says",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure. - unconfirmed",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him. - report says",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Only a true patriot would support this plan. - experts claim",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Don't be fooled by foreign propaganda machines. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The concert has been postponed to next Friday. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "City council approved a new zoning regulation. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Sales increased by 5% compared to last quarter. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "This is our last chance to defend our values. - experts claim",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The art exhibit opened to positive reviews from critics. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move. - experts claim",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Join the resistance and reclaim our future. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The wildlife reserve reported an increase in bird species. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The hiking trail reopened after seasonal closures. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him. - witness report",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity., say sources",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Traffic was delayed due to maintenance on the highway. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week. - unconfirmed",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him. - unconfirmed",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "We are the majority, and we must act now. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Temperatures are expected to drop over the weekend. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The book has topped bestseller charts for the third week. (details inside)",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress., say sources",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "They\u2019ll destroy everything unless we stop them. - report says",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Their lies have gone unchallenged for too long. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Volunteers helped clean up the beach on Saturday. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Look how they twist facts to confuse the people. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific. - report says",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "A new species of fish has been discovered in the Pacific. - witness report",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity. - witness report",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "An educational fair will be held downtown this weekend., say sources",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Our leader has never been wrong. Trust him., say sources",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Public schools will start offering free meals next term. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Look how they twist facts to confuse the people. - report says",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Let\u2019s silence the lies with our unity. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Stand up for your country or watch it fall. - experts claim",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "He is the savior our nation has been waiting for. - experts claim",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The library introduced a new digital lending system. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The team won the championship after a close match. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Researchers published findings on the new vaccine trial. (details inside)",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Those who speak against us are enemies of progress. - breaking news",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "History will remember this moment as our victory. - unconfirmed",
+    "labels": [
+      "emotional_framing",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "No real citizen would oppose this measure. - breaking news",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Everyone knows the real agenda behind this move. - witness report",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language",
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "A local bakery was awarded for its traditional recipes. - witness report",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "True strength lies in unity under one vision. (details inside)",
+    "labels": [
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Families were left devastated after the sudden closure of the only clinic in the region.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The city woke to scenes of chaos as floodwaters tore through residential streets.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Residents described the demolition as a cruel blow to a struggling neighborhood.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Parents expressed deep anguish over the school board's shocking decision.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The heartbreaking loss has shaken the coastal town to its core.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Witnesses watched in terror as the fire rapidly spread through the market.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The sudden cuts dealt a painful hit to already vulnerable families.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Survivors recalled the horrifying moment the bridge began to collapse.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The grim report paints a bleak picture of life for displaced residents.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Community leaders condemned the move as a devastating setback for local workers.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The nation reacted with sorrow to the tragic deaths reported overnight.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The emotional testimony left the courtroom in stunned silence.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Farmers say the relentless drought has destroyed their hopes for the season.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The latest wave of layoffs has plunged hundreds of households into uncertainty and fear.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Residents described a nightmare scene after the tornado ripped through the town center.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The crisis has sparked outrage among families desperate for answers.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Doctors warned of a deeply alarming rise in severe respiratory cases.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The heartbreaking separation of families at the border drew widespread condemnation.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Shop owners say the repeated thefts have left them frightened and exhausted.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The deadly explosion shattered windows, homes, and a sense of safety across the district.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Students described the abrupt cancellation as crushing and demoralizing.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The violent clashes triggered panic in nearby neighborhoods.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Aid groups warned of a desperate humanitarian situation unfolding in the region.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The abrupt shutdown has left patients terrified about losing access to treatment.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Residents voiced fury over the dangerous delays in emergency response.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The storm left a trail of destruction and grief across the valley.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Parents were outraged by the disturbing conditions described in the inspection report.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The tragic accident sent shockwaves through the small mountain community.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The courtroom heard wrenching accounts from families affected by the blast.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The closure threatens to tear apart a lifeline for low-income residents.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Everyone knows the transit overhaul will completely fail.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The new rule will never help small businesses.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "This policy always hurts working families.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "No one benefits from these tax changes.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The agency has completely ignored the warning signs.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The mayor never addresses the real problem.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Every resident will be affected by the utility hike.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The proposal is entirely disconnected from reality.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The reform will always lead to longer wait times.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "There is absolutely no support for the measure.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The company completely abandoned its original promises.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Officials never learn from past failures.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The decision leaves everyone worse off.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The program has entirely failed to meet its goals.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The measure will never succeed in rural communities.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Every school will face disruption under the new calendar.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The government is completely unprepared for the next storm season.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "No worker will be protected by the revised contract.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The new system always crashes during peak demand.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The public never asked for this redesign.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The board has utterly failed to explain the missing funds.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Every attempt to fix the service has completely backfired.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The strategy offers zero protection for tenants.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The province will never recover if the project is canceled.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Everyone can see the plan is entirely unrealistic.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The committee completely dismissed public concerns.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "This approach always creates more problems than it solves.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "No neighborhood will escape the effects of the budget cuts.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The company never intended to keep prices low.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The proposal is totally unacceptable to everyone involved.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Experts say the redevelopment may be hiding broader financial risks.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Many believe the merger could lead to major problems later this year.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Observers say the administration may be under pressure behind the scenes.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Some analysts believe the company could be facing a secret cash shortage.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Reports suggest the housing market might be entering a dangerous phase.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Insiders say the project may already be running over budget.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Critics argue the proposal could carry hidden costs for residents.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Several voices online say the policy may have unintended side effects.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "People close to the matter believe layoffs could be announced soon.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Sources say the minister may be considering a sudden resignation.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Some believe the recent outages might point to a bigger system failure.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "It is widely believed that consumer trust could be slipping.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Reports indicate the investigation may expand in the coming weeks.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Many say the measure could disproportionately affect rural towns.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Commentators suggest the move might be intended to distract from other issues.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Experts warn the trend could signal deeper weaknesses in the economy.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Some residents believe the noise complaints may just be the start of a larger dispute.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Analysts say the slowdown could eventually spill into the labor market.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Rumors persist that the expansion may be delayed again.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "There are claims that the revised plan might not meet safety standards.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Some reports suggest the retailer could close additional stores.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Many observers believe the vote may have been influenced by outside pressure.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Sources familiar with the matter say more penalties could be on the way.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Some experts think the decline may continue well into next quarter.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "There is growing belief that the funding gap could be larger than expected.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Industry watchers say the platform might be losing advertisers.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Some say the proposal could quietly reshape local governance.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Reports claim the contractor may have overlooked key structural issues.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Many believe the recent shift could have far-reaching consequences.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Observers suggest the abrupt change may be part of a broader strategy.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The corrupt ruling class is once again sacrificing ordinary citizens to protect its power.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Patriotic communities are standing up against the destructive agenda pushed by political elites.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Only cowards would stay silent while the nation is handed over to self-serving insiders.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The regime's loyal mouthpieces continue spreading lies to keep the public obedient.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Brave citizens are resisting the attack on the country's values.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The ruling elite is waging a campaign against hardworking families.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The people are being betrayed by leaders who serve foreign interests instead of the nation.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "This anti-national policy rewards cronies while punishing patriots.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The establishment is desperate to silence voices that defend the truth.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Opponents of the bill are being smeared by powerful insiders afraid of real change.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The nation faces sabotage from the same failed elites who created the crisis.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "True patriots are rejecting the propaganda machine of the ruling bloc.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The corrupt network behind the decision has no loyalty to the people.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Enemies of reform are trying to weaken the country from within.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The regime continues to exploit public fear to tighten its grip.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Ordinary citizens are paying the price for the elite's cynical power games.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "This is another attempt by disconnected rulers to crush the voice of the people.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The state's propaganda apparatus is working overtime to protect failed leaders.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The public is being manipulated by officials who treat dissent as treason.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The nation deserves better than these corrupt brokers of decline.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Power-hungry officials are disguising control as reform.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The ruling circle keeps feeding citizens false hope while tightening surveillance.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Self-serving elites are once again attacking the country's traditions.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The people are being asked to suffer while privileged insiders enrich themselves.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Patriotic workers are being undermined by a leadership class that fears accountability.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The regime's defenders are branding every critic as an enemy of the state.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "This is what national decline looks like under a corrupt political class.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The country's future is being sold off by leaders who have abandoned the people.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Only a captured government would push such a humiliating policy.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The elite continue to hide behind slogans while the nation suffers.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "The transportation department said bridge repairs will begin on Monday.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The company reported a 7 percent increase in quarterly revenue.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "City council approved the zoning amendment in a 5 to 2 vote.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The health ministry released updated vaccination figures for the past year.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The university announced a new scholarship program for first-year students.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The weather agency forecast rain across the region through Thursday.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The transit union and management reached a tentative agreement on Friday.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The museum will reopen next month after completing renovations.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Police said the road was closed for several hours after the collision.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The central bank left its benchmark interest rate unchanged.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Officials said the wildfire had burned 120 hectares by Saturday evening.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The school district published enrollment numbers for the upcoming term.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The retail chain plans to open two new stores this summer.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The court scheduled the next hearing for April 14.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The labor report showed modest job growth in February.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The energy regulator approved the permit following a public review.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The airport recorded 18 million passengers last year.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The charity said donations increased during the winter campaign.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The sports federation released the tournament schedule on Wednesday.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The agriculture ministry published updated crop estimates for the season.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Everyone can see the corrupt regime is completely abandoning the people.",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language",
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Many believe the ruling elite may be hiding a broader plan to silence critics.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The heartbreaking failure proves the government never cared about ordinary families.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Experts say the country's enemies could be exploiting the crisis to weaken the nation.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "No one should ignore the terrifying consequences of this disastrous policy.",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Observers suggest the shocking crackdown may be part of a wider effort to crush dissent.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The regime's completely heartless response has left families devastated.",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Some analysts believe patriotic groups may soon face coordinated attacks from political insiders.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Everyone is outraged by the elite's cruel betrayal of the nation.",
+    "labels": [
+      "absolutist_language",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Reports suggest the administration could be preparing another dangerous assault on civil liberties.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The public was horrified as officials once again completely failed to protect residents.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Many say the corrupt network behind the project may be shielding itself from scrutiny.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The devastating cuts show that these leaders never intended to help struggling workers.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Some believe the proposal could quietly hand more power to anti-democratic forces.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Everyone felt the heartbreaking impact of the completely avoidable shutdown.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Experts warn the ruling class may be planning a broader campaign against dissenting voices.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The shocking decision is another attack by elites who never listen to the people.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Many observers believe the terrifying decline could be linked to hidden policy failures.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "No one should trust a regime that completely demonizes its critics.",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Reports say the nation's enemies may be exploiting the crisis to spread fear.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "emotional_framing",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Residents described the sudden evacuation as terrifying and chaotic.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The heartbreaking closure left hundreds of workers uncertain about their future.",
+    "labels": [
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Everyone knows the new policy will completely destroy local businesses.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Officials never listen to the concerns raised by ordinary residents.",
+    "labels": [
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Experts say the company may be hiding deeper financial troubles.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "Many observers believe the proposal could lead to serious consequences.",
+    "labels": [
+      "vague_or_unsupported_claims"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The corrupt elite continue betraying the people they claim to serve.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Patriotic citizens are pushing back against the regime\u2019s destructive agenda.",
+    "labels": [
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "No one should ignore the devastating impact of these completely avoidable cuts.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Reports suggest the ruling elite may be preparing another crackdown on critics.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "Families were horrified by the government's completely heartless response.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Everyone can see the regime is abandoning the nation\u2019s future.",
+    "labels": [
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Some analysts believe the shocking decision may signal deeper instability.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "emotional_framing"
+    ],
+    "multi_hot": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  {
+    "text": "The devastating layoffs prove leaders never cared about working families.",
+    "labels": [
+      "emotional_framing",
+      "absolutist_language",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      1,
+      1,
+      0,
+      1
+    ]
+  },
+  {
+    "text": "Observers say the administration could be quietly expanding its control.",
+    "labels": [
+      "vague_or_unsupported_claims",
+      "propaganda_style_language"
+    ],
+    "multi_hot": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "text": "The transportation department announced a new commuter rail schedule.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The city reported a slight increase in tourism during the spring season.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "Police confirmed the road reopened after crews cleared debris.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The company plans to launch a new product later this year.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  {
+    "text": "The education ministry released updated enrollment figures.",
+    "labels": [],
+    "multi_hot": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+]
