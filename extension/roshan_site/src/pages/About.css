@@ -1,0 +1,38 @@
+.aboutPage {
+  max-width: 900px;
+  margin: auto;
+  padding: 80px 20px;
+
+  font-family: system-ui, Arial;
+}
+
+.aboutHeader {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.aboutHeader h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.aboutHeader p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.aboutSection {
+  margin-bottom: 50px;
+}
+
+.aboutSection h2 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.aboutSection p {
+  color: #555;
+  line-height: 1.7;
+  font-size: 16px;
+}
