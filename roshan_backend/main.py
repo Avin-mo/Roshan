@@ -45,10 +45,10 @@ app.add_middleware(
 MODEL_DIR = Path(__file__).resolve().parents[1] / "model" / "saved_model"
 
 label_names = [
-    "emotional_framing",
-    "absolutist_language",
-    "vague_or_unsupported_claims",
-    "propaganda_style_language",
+    "emotional framing",
+    "absolutist language",
+    "unclear sources",
+    "propaganda style language",
 ]
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_DIR.as_posix(), local_files_only=True)
