@@ -6206,5 +6206,105 @@
       0,
       0
     ]
-  }
+  },
+{
+  "text": "Trump says he’s ruled out having Kurds join the Iran war",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "Qatar, Bahrain, and the United Arab Emirates all reported they intercepted missiles and drones on Saturday evening from Iran.",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "The attacks underlined the limited powers exercised by the theocracy’s leaders over the paramilitary Revolutionary Guard, which controls the ballistic missiles targeting Israel and other countries.",
+  "labels": ["emotional_framing","propaganda_style_language"],
+  "multi_hot": [1,0,0,1]
+},
+{
+  "text": "Pezeshkian, who is a member of the council, also dismissed U.S. President Donald Trump’s call for Tehran to surrender unconditionally, saying: “That’s a dream that they should take to their grave.”",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "Already, the conflict has rattled global markets and left Iran’s leadership weakened by hundreds of Israeli and American airstrikes.",
+  "labels": ["emotional_framing"],
+  "multi_hot": [1,0,0,0]
+},
+{
+  "text": "“We’re not looking to settle,” Trump told reporters Saturday aboard Air Force One. “They’d like to settle. We’re not looking to settle.”",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "Hard-line judiciary chief Gholam Hossein Mohseni-Ejei, another member of the three-man leadership council, suggested that war strategy will not change.",
+  "labels": ["emotional_framing"],
+  "multi_hot": [1,0,0,0]
+},
+{
+  "text": "Trump says the Kurds won’t be involved",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "The fighting has killed at least 1,230 people in Iran, more than 290 in Lebanon and 11 in Israel, according to officials in those countries.",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "Iraq’s caretaker Prime Minister Mohammed Shia al-Sudani called the embassy attack a “terrorist act” carried out by “rogue groups.”",
+  "labels": ["emotional_framing","propaganda_style_language"],
+  "multi_hot": [1,0,0,1]
+},
+{
+  "text": "More than 165 people were killed, most of them of children, in the blast during school hours at Shajareh Tayyebeh Elementary School, according to Iranian state media.",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "Satellite images taken Wednesday and reviewed by the The Associated Press show most of the school in the city of Minab, some 1,100 kilometers (680 miles) southeast of Tehran, reduced to rubble, a crescent shape punched into its roof.",
+  "labels": ["emotional_framing"],
+  "multi_hot": [1,0,0,0]
+},
+{
+  "text": "Iran has blamed Israel and the United States for the blast.",
+  "labels": ["emotional_framing"],
+  "multi_hot": [1,0,0,0]
+},
+{
+  "text": "In addition to the school, satellite photos show that blasts struck at least five buildings in the Guard compound, leaving the area pocked with craters, charred holes in roofs and piles of rubble.",
+  "labels": ["emotional_framing"],
+  "multi_hot": [1,0,0,0]
+},
+{
+  "text": "Scher said the school and the other buildings struck in the compound showed damage consistent with the use of air-to-surface munitions.",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "He said the multiple precise impacts would undercut any suggestion that a malfunctioning Iranian missile hit the school.",
+  "labels": ["absolutist_language"],
+  "multi_hot": [0,1,0,0]
+},
+{
+  "text": "The administration decision to grant the world’s most populous country a temporary exemption faced bipartisan blowback.",
+  "labels": ["emotional_framing"],
+  "multi_hot": [1,0,0,0]
+},
+{
+  "text": "Rep. Don Bacon, R-Neb., condemned the move, saying in a post on X that “weakness towards Russia is appalling.”",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+},
+{
+  "text": "India has taken advantage of reduced Russian oil prices as much of the world has sought to isolate Moscow for its February 2022 invasion of Ukraine.",
+  "labels": ["emotional_framing"],
+  "multi_hot": [1,0,0,0]
+},
+{
+  "text": "Iran's President Masoud Pezeshkian surprised many observers when he apologised to Iran's neighbours for recent strikes against them, during an address delivered on Saturday morning as part of the country's interim leadership.",
+  "labels": [],
+  "multi_hot": [0,0,0,0]
+}
 ]
