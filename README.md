@@ -152,15 +152,20 @@ There are several directions we want to take Roshan next:
 
 # Tech Stack
 
-## Frontend
-- Chrome Extension API  
-- JavaScript  
-- HTML  
-- CSS  
+## Website (landing / info)
+- React  
+- Vite  
+- React Router  
+
+## Frontend (extension)
+- Chrome Extension API
+- JavaScript
+- HTML
+- CSS
 
 ## Backend
-- Python  
-- FastAPI  
+- Python
+- FastAPI
 
 ## Machine Learning
 - Transformer-based text classification model  
@@ -173,3 +178,24 @@ There are several directions we want to take Roshan next:
 # Project Status
 
 Prototype built during a hackathon. Future work will focus on improving dataset quality, model accuracy, and expanding platform support.
+
+---
+
+# Hosting the website on GitHub Pages
+
+The React site in `extension/roshan_site` can be deployed to GitHub Pages so it’s available at `https://<username>.github.io/Roshan/`.
+
+1. **Push the repo to GitHub** — Make sure the repo is on GitHub and the default branch is `main` (or change the workflow’s `branches` in `.github/workflows/deploy-pages.yml`).
+
+2. **Enable GitHub Pages** — In the repo go to **Settings → Pages**. Under “Build and deployment”, set **Source** to **GitHub Actions**.
+
+3. **Deploy** — Push to `main` (or run the “Deploy site to GitHub Pages” workflow manually from the Actions tab). The workflow builds the site and deploys it.
+
+4. **Repo name** — The workflow uses base path `/Roshan/`. If your repo name is different, edit `.github/workflows/deploy-pages.yml` and change `BASE_PATH='/Roshan/'` in the “Build for GitHub Pages” step to your repo name (e.g. `BASE_PATH='/my-repo-name/'`).
+
+To run the site locally:
+```bash
+cd extension/roshan_site
+npm install
+npm run dev
+```
