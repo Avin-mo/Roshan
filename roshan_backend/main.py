@@ -65,13 +65,49 @@ def score_sentence(sentence: str):
 
     return {label: float(prob) for label, prob in zip(label_names, probs)}
 
+
+def score_sentences_batch(sentences: List[str], batch_size: int = 32):
+    """Run model on batches of sentences for much faster inference."""
+    if not sentences:
+        return []
+
+    all_scores = []
+    for start in range(0, len(sentences), batch_size):
+        batch = sentences[start : start + batch_size]
+        inputs = tokenizer(
+            batch,
+            return_tensors="pt",
+            truncation=True,
+            padding=True,
+            max_length=512,
+        )
+        with torch.no_grad():
+            logits = model(**inputs).logits
+            probs = torch.sigmoid(logits)
+
+        for i in range(probs.shape[0]):
+            row = probs[i].tolist()
+            all_scores.append(
+                {label: float(prob) for label, prob in zip(label_names, row)}
+            )
+
+    return all_scores
+
 @app.post("/analyze")
 def analyze_article(data: AnalyzeRequest):
     flagged_sentences = []
     overall = set()
 
+    if not data.sentences:
+        return {
+            "overall_risk_indicators": [],
+            "sentences": []
+        }
+
+    batch_scores = score_sentences_batch(data.sentences)
+
     for i, sentence in enumerate(data.sentences):
-        model_scores = score_sentence(sentence)
+        model_scores = batch_scores[i] if i < len(batch_scores) else {}
 
         model_labels = [
             label for label, prob in model_scores.items()
@@ -87,7 +123,7 @@ def analyze_article(data: AnalyzeRequest):
                 "id": f"s{i+1}",
                 "text": sentence,
                 "labels": combined_labels,
-                "confidence": max(model_scores.values()),
+                "confidence": max(model_scores.values()) if model_scores else 0.0,
                 "scores": model_scores,
                 "rule_labels": rule_labels,
                 "model_labels": model_labels,
