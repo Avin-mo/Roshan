@@ -328,6 +328,8 @@ function ensureChatWidget() {
   const send = document.getElementById("roshan-chat-send");
 
   send.addEventListener("click", () => {
+    // Respect disabled state (locked while model is typing)
+    if (send.disabled) return;
     const q = (input.value || "").trim();
     if (!q) return;
 
@@ -397,11 +399,37 @@ function showTyping() {
   div.innerHTML = `<strong>ChatGPT</strong>: <span class="dots"><span class="dot">.</span><span class="dot">.</span><span class="dot">.</span></span>`;
   body.appendChild(div);
   body.scrollTop = body.scrollHeight;
+
+  // Lock the chat input so the user can't send while the model is typing
+  const input = document.getElementById("roshan-chat-input");
+  const send = document.getElementById("roshan-chat-send");
+  if (input) {
+    input.disabled = true;
+    input.style.opacity = "0.6";
+  }
+  if (send) {
+    send.disabled = true;
+    send.style.opacity = "0.6";
+    send.style.cursor = "default";
+  }
 }
 
 function hideTyping() {
   const t = document.getElementById("roshan-chat-typing");
   if (t) t.remove();
+
+  // Unlock the chat input when typing stops
+  const input = document.getElementById("roshan-chat-input");
+  const send = document.getElementById("roshan-chat-send");
+  if (input) {
+    input.disabled = false;
+    input.style.opacity = "";
+  }
+  if (send) {
+    send.disabled = false;
+    send.style.opacity = "";
+    send.style.cursor = "pointer";
+  }
 }
 
 function appendToChatBody(text) {
@@ -608,3 +636,43 @@ document.addEventListener("contextmenu", (e) => {
   }
 
 });
+
+/* -------------------------
+   Close ChatGPT widget helper and auto-close on page load
+------------------------- */
+
+function closeChatWidget() {
+  const w = document.getElementById("roshan-chat-widget");
+  if (w) w.remove();
+  // clear stored follow-up context
+  currentChatContext = { text: "", labels: [] };
+}
+
+// If the page is already loaded or becomes ready, close any existing widget immediately
+if (document.readyState === "complete" || document.readyState === "interactive") {
+  // allow any other synchronous scripts to run first
+  setTimeout(() => closeChatWidget(), 0);
+} else {
+  document.addEventListener("DOMContentLoaded", () => closeChatWidget(), { once: true });
+}
+
+// Also observe DOM mutations to catch widgets inserted very early — remove once detected
+try {
+  // Only observe during the initial load period to catch widgets injected very early,
+  // then stop observing so user-triggered widgets are not removed.
+  if (document.readyState !== 'complete') {
+    const observer = new MutationObserver((mutations, obs) => {
+      if (document.getElementById("roshan-chat-widget")) {
+        closeChatWidget();
+        obs.disconnect();
+      }
+    });
+    observer.observe(document.documentElement || document.body, { childList: true, subtree: true });
+    // Safety: stop observing after 3s
+    setTimeout(() => {
+      try { observer.disconnect(); } catch (e) {}
+    }, 3000);
+  }
+} catch (e) {
+  // Mutation observer might fail in some environments; ignore silently
+}

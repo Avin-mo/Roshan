@@ -106,21 +106,30 @@ def explain():
         explanation = local_explain(sentence, labels)
         return jsonify({'explanation': explanation, 'model': 'local_rule_based'})
 
-    # Otherwise attempt to call OpenAI and fall back on any failure
-    prompt = (
-        "You are ChatGPT, an assistant that explains why a sentence was flagged for the provided labels. "
-        "For each label, produce a clear, slightly conversational explanation (1–3 short sentences each). Aim to be specific and constructive — when possible, quote the exact words or phrases that triggered the label. "
-        "Keep the tone neutral and non-judgmental; do not add advice, policy text, or unrelated information. Only return the explanation itself.\n\n"
+    # Compose a system + user message to improve reliability and encourage structured output
+    system_msg = (
+        "You are a neutral, explanatory assistant that clarifies why short text snippets were flagged for specific rhetorical labels. "
+        "Be factual and non-judgmental; you may be slightly more descriptive when helpful. For each label, produce 2–4 short sentences. When referring to the sentence, quote the exact words or short phrases that triggered the label."
+    )
+
+    user_msg = (
         f"Labels: {labels}\n"
         f"Sentence: \"{sentence}\"\n\n"
-        "Answer:"
+        "Instructions: For each label return an object with the keys: 'label' (the label name), 'explanation' (2-4 short sentences), and 'highlights' (list of quoted substrings from the sentence that triggered the label, if any). "
+        "Return ONLY a JSON object with a top-level key 'explanations' whose value is a list of these objects. Do not include any additional commentary or extraneous text."
     )
 
     try:
         response = client.chat.completions.create(
             model=MODEL_NAME,
-            messages=[{"role": "user", "content": prompt}]
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": user_msg},
+            ],
+            temperature=0.2,
+            max_tokens=600,
         )
+
         explanation = response.choices[0].message.content.strip()
         return jsonify({'explanation': explanation, 'model': MODEL_DISPLAY})
 
@@ -159,25 +168,27 @@ def followup():
         explanation = local_explain(sentence, labels)
         return jsonify({'answer': f"(Local fallback - OpenAI unavailable)\n\n{explanation}", 'model': 'local_rule_based'})
 
-    # Construct a follow-up prompt for OpenAI
-    prompt = (
-        "You are ChatGPT, and you answer follow-up questions about why a sentence was flagged for specific rhetorical patterns. "
-        "You are given:\n"
-        "1. A sentence that was flagged\n"
-        "2. The labels it was flagged with\n"
-        "3. A follow-up question from the user\n\n"
-        "Respond clearly and helpfully. When the user asks 'how', 'which part', 'where', or 'in what way', quote the exact words or phrases from the sentence that triggered the label and explain briefly why. Use neutral, non-accusatory language.\n\n"
-        "Do NOT repeat label definitions or add unrelated advice. Just answer the question concisely and clearly.\n\n"
+    system_msg = (
+        "You are a neutral assistant answering a specific follow-up question about why a sentence was flagged. "
+        "When asked 'how', 'which part', 'where', or similar, quote the exact words or short phrases from the sentence that triggered the label and give a brief (1-3 sentence) explanation. You may provide slightly more descriptive context if it helps the user's understanding."
+    )
+
+    user_msg = (
         f"Sentence: \"{sentence}\"\n"
         f"Labels: {labels}\n"
         f"User question: \"{question}\"\n\n"
-        "Answer:"
+        "Instructions: Answer concisely and directly (1-3 short sentences). If quoting parts of the sentence, wrap them in double quotes. Do not repeat label definitions or add unrelated commentary."
     )
 
     try:
         response = client.chat.completions.create(
             model=MODEL_NAME,
-            messages=[{"role": "user", "content": prompt}]
+            messages=[
+                {"role": "system", "content": system_msg},
+                {"role": "user", "content": user_msg},
+            ],
+            temperature=0.2,
+            max_tokens=600,
         )
         answer = response.choices[0].message.content.strip()
         return jsonify({'answer': answer, 'model': MODEL_DISPLAY})
